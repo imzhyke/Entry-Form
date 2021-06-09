@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Instructor's Entry Form</title>
-      <style>
+       <style>
           body{
      
               margin:0;
@@ -24,8 +24,7 @@
               top:50%;
               left:50%;
               transform: translate(-50%,-50%);
-              width:600px;
-              height:800px;
+              width:540px;
               padding:40px;
               border-radius: 10px;
               background:rgb(255, 255, 255);
@@ -70,6 +69,7 @@
              margin:10px 15px;
          }
           .TxtField{
+              height:29px;
               width:100%;
               border-radius: 5px;
               font-family:Verdana;
@@ -122,7 +122,7 @@
     <div class="entryForm">
          <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
         <div class="headerContainer">
-            <h2>Instructor's Entry Form</h2>
+            <h2>Instrutor's Entry Form</h2>
         </div>
 
 
@@ -157,11 +157,6 @@
              </asp:RadioButtonList>
         </div>
         <h3>Address</h3>
-         <div class="items">
-        <asp:Label Text="Current Address" CssClass="lblCurAdd" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtCurAdd" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
-       <br />  <asp:TextBox CssClass="TxtField" placeholder="Current Address" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtCurAdd"></asp:TextBox> 
-        </div>
 
         <div class="items">
         <asp:Label Text="Permanent Address" CssClass="lblPerAdd" runat="server" ></asp:Label>
@@ -177,19 +172,19 @@
         </div>    
 
         <div class="items">
-        <asp:Label Text="Junior High" CssClass="lblSchool" runat="server" ></asp:Label>
+        <asp:Label Text="Secondary" CssClass="lblSchool" runat="server" ></asp:Label>
              <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtJunHigh" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtJunHigh"></asp:TextBox> 
         </div>  
         
         <div class="items">
-        <asp:Label Text="Senior Hig" CssClass="lblSchool" runat="server" ></asp:Label>
+        <asp:Label Text="College" CssClass="lblSchool" runat="server" ID="Label1" ></asp:Label>
              <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator9" runat="server" ControlToValidate="TxtSenHigh" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtSenHigh"></asp:TextBox> 
         </div>    
 
          <div class="btnSubmit">
-         <asp:Button CssClass="btnSbmt" ID="AddStudentBtn" runat="server" Text="ADD STUDENT" Font-Bold="True" ForeColor="White" OnClick="AddStudentBtn_Click" />
+         <asp:Button CssClass="btnSbmt" ID="AddStudentBtn" runat="server" Text="ADD INSTRUCTOR" Font-Bold="True" ForeColor="White"  />
 
             </div>
          </div>
@@ -197,4 +192,3 @@
  </form>
 </body>
 </html>
-

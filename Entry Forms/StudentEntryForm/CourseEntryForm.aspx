@@ -8,7 +8,7 @@ Date: 3/30/2021
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Course Entry Form</title>
+<title>Course Entry Form</title>
       <style>
           body{
      
@@ -18,7 +18,8 @@ Date: 3/30/2021
               background-size: cover;
               height: 100vh;
               width:auto;
-              font-family:'Century Gothic';
+              font-family:Verdana;
+              
 
           }
           .entryForm{
@@ -27,13 +28,13 @@ Date: 3/30/2021
               top:50%;
               left:50%;
               transform: translate(-50%,-50%);
-              width:550px;
-              height:750px;
-               padding:40px 40px;
-               border-radius: 10px;
-               box-shadow: 0 0 30px #0e3134;
-               background:rgb(255, 255, 255);
-               
+              width:540px;
+
+              padding:40px;
+              border-radius: 10px;
+              background:rgb(255, 255, 255);
+              margin: 20px 10px;
+              box-shadow: 0 0 30px #0e3134;
           }
           .logo{
               width:100px;
@@ -44,205 +45,196 @@ Date: 3/30/2021
               position:absolute;
               
           }
-          h2{
-              text-align:center;
-              color: #143345
-          } 
-          .lblFN, .lblIDNum, .lblYear, .lblCourse, .lblDOB, .lblGender, .lblEmail, .lblContact, .lblAddress,.lblParent,.lblOccu{
+           h2{
+              color:#424642;
+              display:block;
+
+          }
+          h2::after{
+            display:inline-block;
+            content:'';
+            height:5px;
+            width: 100%;
+            background: #212634;
+            padding:0;
+        }
+            
+          .headerContainer{
+              text-align: center;
+          }
+          .lable{
               font-weight:bold;
-          }
-          .txtFName, .txtMName, .txtLName{
-              width:auto;
-              margin: 0 auto;
-              padding-left: 5px;
-              margin-bottom: 20px;
-              height:30px;
-          }
-          .txtIDNum,.txtyear{
-              padding-left: 5px;
-              height:30px;
-              width:80%;
-          }
-          .txtCourse{
-              padding-left: 5px;
-              height:30px;
-              width:97%;
-          }
-          .txtParent {
-              padding-left: 5px;
-              height:30px;
-              width: 90%;
-          }
-          .txtContact,.txtEmail,.txtOccu{
-              padding-left: 5px;
-              height:30px;
-              width:100%;
-          }
-          .txtDOB{
-              height:30px;
-              width:80%;
-          }
-          .ddlGender{
-              height:30px;
-              width:80%;
-          }
-          .txtAddress{
-              width:98%;
-              height:90px;
-              padding: 5px;
+              color: #424642;
           }
 
-            
-          .item{
-              display:inline-block;
-              
+          .content{
+              padding: 0 60px;
           }
-          .c1, .c2, .c3{
-              padding-bottom: 20px;
-          }
-          .c1{
-              width:30%;
-          }
-          .c2{
-              width:25%;
-          }
-          .c3{
-              width:auto;
-          }
-          .c4, .c5{
-              padding-bottom: 20px;
-          }
-          .c4{
-              width:35%;
-          }
-          .c6,.c7 {
-              width:46%;
-              padding-bottom: 20px;
-              
-          }
-          .c6{
-              padding-right: 30px;
-          }
-          .c5{
-              width:auto;
-          }
-          .c8, .c10{
-              width: 60%;
-          }
-          .c8, .c9{
-              padding-bottom: 20px;
-          }
-          .c10, .c11{
-              padding-bottom: 20px;
-          }
-          .c9,.c11{
-              width: 37%;
+         .items{
+             margin:10px 15px;
+         }
+          .TxtField{
+              width:100%;
+              border-radius: 5px;
+              font-family:Verdana;
+              height: 29px;
           }
 
           .btnSubmit{
-              margin-top:20px;
+              text-align: center;
+              padding: 15px 20px ;
+              margin-left: 20px;
+          
+               
+          }
+          .btnSbmt{
               width:100%;
-              height:50px;
-              font-size:large;
+              height: 50px;
               border:none;
+              outline: none;
               border-radius: 5px;
               background-image:linear-gradient(to right, #99ADE7,#88EDD5);
+              font-size: medium;
+              color:snow;
+     
           }
-          .btnSubmit:hover {
-              background-image:linear-gradient(to left, #99ADE7,#88EDD5);
+         .btnSbmt:hover {
+             background-image:linear-gradient(to left, #99ADE7,#99ADE7);
            }
-      
+         .validators{
+             color:#d85656;
+             font-size:small;
+             margin-left:4px;
+             float:right;
+
+         }
+          h3{
+            color:#424642;
+            margin-bottom : 10px;
+            margin-left:-10px;
+          }
+          .DropDownList{
+            width:75%;
+            margin-left: 5px;
+            height: 29px;
+            border-radius: 5px;
+            font-family:Verdana;
+          }
+
+          .backBtn{
+              position:absolute;
+              top:50%;
+              left:30%;
+              transform: translate(-50%,-30%);
+              height: 40px;
+              width: 70px;
+              border:none;
+              outline: none;
+              border-radius: 5px;
+              background-color: #99ADE7;
+              box-shadow: 0 0 30px #0e3134;
+              color:#0b1542;
+          }
+          .nextBtn{
+              position:absolute;
+              top:50%;
+              left:70%;
+              transform: translate(-50%,-70%);
+              height: 40px;
+              width: 70px;
+              border:none;
+              outline: none;
+              border-radius: 5px;
+              background-color: #99ADE7;
+              box-shadow: 0 0 30px #0e3134;
+              color:#0b1542;
+          }
+          .nextBtn:hover , .backBtn:hover{
+            
+          }
 
 
 
 
-       </style>
 
+
+          .auto-style1 {
+              border-style: none;
+              border-color: inherit;
+              border-width: medium;
+              position: absolute;
+              top: 50%;
+              left: 30%;
+              transform: translate(-50%,-30%);
+              height: 40px;
+              width: 70px;
+              outline: none;
+              border-radius: 5px;
+              background-color: #99ADE7;
+              box-shadow: 0 0 30px #0e3134;
+              color: #0b1542;
+              right: 844px;
+              background-color:#88EDD5;
+          }
+
+
+
+
+
+
+      </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="entryForm">
-             <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
+<form  runat="server">
+
+    <div class="entryForm">
+         <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
+        <div class="headerContainer">
             <h2>Course Entry Form</h2>
-            <div class="content" >
-                <asp:Label CssClass="lblFN" ID="Label1" runat="server" Text="Student Name"></asp:Label> </br>
-                <asp:TextBox CssClass="txtFName" ID="TextBox1" placeholder="First Name"  runat="server"></asp:TextBox>
-                <asp:TextBox CssClass="txtMName" ID="TextBox2" placeholder="Middle Name"  runat="server"></asp:TextBox>
-                <asp:TextBox CssClass="txtLName" ID="TextBox3" placeholder="Last Name"  runat="server"></asp:TextBox> </br>
-
-                <div class="c1 item">
-                <asp:Label CssClass="lblIDNum" ID="Label2" runat="server" Text="ID Number"></asp:Label> 
-                <asp:TextBox CssClass="txtIDNum" ID="TextBox4" placeholder="119XXXX"  runat="server"></asp:TextBox> 
-                </div>
-
-                <div class="c2 item">
-                <asp:Label CssClass="lblYear" ID="Label3" runat="server" Text="Year"></asp:Label>
-                <asp:TextBox CssClass="txtyear" ID="TextBox5" placeholder="Year"  runat="server"></asp:TextBox>
-                </div>
-
-                <div class="c3 item">
-                <asp:Label CssClass="lblCourse" ID="Label4" runat="server" Text="Course"></asp:Label>
-                <asp:TextBox CssClass="txtCourse" ID="TextBox6" placeholder="Course"  runat="server"></asp:TextBox>
-                 </div>
-                </br>
-
-                <div class="c4 item">
-                 <asp:Label CssClass="lblDOB" ID="Label5" runat="server" Text="Birth Date"></asp:Label>
-                <asp:TextBox CssClass="txtDOB" ID="TextBox7"  runat="server" TextMode="Date"></asp:TextBox>
-                 </div>
-                <div class="c5 item">
-                 <asp:Label CssClass="lblGender" ID="Label6" runat="server" Text="Gender"></asp:Label>
-                <asp:DropDownList  CssClass="ddlGender" ID="DropDownList1"  placeholder="Select" runat="server">
-                    <asp:ListItem>Male</asp:ListItem>
-                    <asp:ListItem>Female</asp:ListItem>
-                    <asp:ListItem Selected="True">N/A</asp:ListItem>
-                </asp:DropDownList>
-                </div>
-                </br>
-
-                <div class="c6 item"> 
-                <asp:Label CssClass="lblEmail" ID="Label7" runat="server" Text="Email"></asp:Label> </br>
-                <asp:TextBox CssClass="txtEmail" ID="TextBox8"  runat="server" placeholder="example@ctu.edu.ph" TextMode="Email"></asp:TextBox>
-                </div>
-
-                <div class="c7 item"> 
-                <asp:Label CssClass="lblContact" ID="Label8" runat="server" Text="Contact Number"></asp:Label>
-                <asp:TextBox CssClass="txtContact" ID="TextBox9"  placeholder="09XXXXXXXXX" runat="server"  TextMode="Phone"></asp:TextBox>
-                </div>
-                </br>
-
-                <div  style="padding-bottom:20px">
-                <asp:Label CssClass="lblAddress" ID="Label9" runat="server" Text="Address"></asp:Label>
-                <asp:TextBox CssClass="txtAddress" ID="TextBox10"  runat="server" placeholder="Address" textmode="MultiLine" ></asp:TextBox></br>
-                </div>
-
-                 <div class="c8 item"> 
-                <asp:Label CssClass="lblParent" ID="Label10" runat="server" Text="Father's Name"></asp:Label> </br>
-                <asp:TextBox CssClass="txtParent" ID="TextBox11"  runat="server" placeholder="Last Name, First Name, M.I" TextMode="SingleLine"></asp:TextBox>
-                </div>
-
-                 <div class="c9 item"> 
-                <asp:Label CssClass="lblOccu" ID="Label11" runat="server" Text="Occupation"></asp:Label> </br>
-                <asp:TextBox CssClass="txtOccu" ID="TextBox12"  runat="server" placeholder="Occupation" TextMode="SingleLine"></asp:TextBox>
-                </div>
-                </br>
-
-                <div class="c10 item"> 
-                <asp:Label CssClass="lblParent" ID="Label13" runat="server" Text="Mother's Name"></asp:Label> </br>
-                <asp:TextBox CssClass="txtParent" ID="TextBox14"  runat="server" placeholder="Last Name, First Name, M.I" TextMode="SingleLine"></asp:TextBox>
-                </div>
-
-                <div class="c11 item"> 
-                <asp:Label CssClass="lblOccu" ID="Label12" runat="server" Text="Occupation"></asp:Label> </br>
-                <asp:TextBox CssClass="txtOccu" ID="TextBox13"  runat="server" placeholder="Occupation" TextMode="SingleLine"></asp:TextBox>
-                </div>
-
-                
-                <asp:Button CssClass="btnSubmit" ID="Button1" runat="server" Text="Submit" ForeColor="White" />
-                
-                
-            </div>
         </div>
-    </form>
+
+
+        <div class="content">
+
+        <h3>Course Information</h3>
+         <div class="items">
+
+        <asp:Label Text="Course Code" CssClass="lable" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator ID="rfvCode" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtCode" Enabled="False"></asp:RequiredFieldValidator>
+       <br /> <asp:TextBox CssClass="TxtField" placeholder="Course Code" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtCode"></asp:TextBox> 
+        </div>
+
+        <div class="items">
+        <asp:Label Text="Course" CssClass="lable" runat="server" ></asp:Label>
+        <br /> <asp:TextBox CssClass="TxtField" placeholder="Course" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtCourse"></asp:TextBox> 
+        </div>
+
+         <div class="items">
+        <asp:Label Text="Units" CssClass="lable" runat="server" ></asp:Label>
+        <br /> <asp:TextBox CssClass="TxtField" placeholder="Units" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtUnit"></asp:TextBox> 
+        </div>
+
+        
+      
+        <div class="items">
+          
+            <asp:Label Text="Program" CssClass="lable" runat="server" ></asp:Label>
+            <asp:DropDownList  CssClass="DropDownList" ID="ddlProg" runat="server">
+                <asp:ListItem>Day</asp:ListItem>
+                <asp:ListItem>Evening</asp:ListItem>
+                <asp:ListItem>Day &amp; Evening</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+
+       
+
+         <div class="btnSubmit">
+         <asp:Button CssClass="btnSbmt" ID="AddStudentBtn" runat="server" Text="ADD COURSE" Font-Bold="True" OnClick="AddStudentBtn_Click"/>
+         </div>
+         </div>
+    </div>
+             <asp:Button CssClass="auto-style1" ID="backBtn" runat="server" Text="Back" Font-Bold="True" OnClick="backBtn_Click"/>  
+             <asp:Button CssClass="nextBtn" ID="nextBtn" runat="server" Text="Next" Font-Bold="True" OnClick="nextBtn_Click"/>
+ </form>
 </body>
 </html>

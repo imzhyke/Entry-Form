@@ -70,6 +70,7 @@
              margin:10px 15px;
          }
           .TxtField{
+              height:29px;
               width:100%;
               border-radius: 5px;
               font-family:Verdana;

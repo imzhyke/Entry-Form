@@ -13,5 +13,22 @@ namespace StudentEntryForm
         {
 
         }
+
+        protected void backBtn_Click(object sender, EventArgs e)
+        {   
+
+            Response.Redirect("StudentEntryForm.aspx");
+        }
+
+        protected void nextBtn_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("Enrollment Form.aspx");
+        }
+
+        protected void AddStudentBtn_Click(object sender, EventArgs e)
+        {
+            rfvCode.Enabled = true;
+        }
     }
 }
