@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
        <style>
           body{
      
@@ -56,19 +56,20 @@
           .headerContainer{
               text-align: center;
           }
-          .lblFName,.lblLName,.lblGender,.lblMName,.lblCurAdd,.lblPerAdd,.lblSchool{
+          .lables{
               font-weight:bold;
               color: #424642;
+              font-size:small;
           }
 
           .content{
               padding: 0 60px;
           }
          .items{
-             margin:10px 15px;
+             margin:8px 15px;
          }
           .TxtField{
-              height:29px;
+             height:23px;
               width:100%;
               border-radius: 5px;
               font-family:Verdana;
@@ -98,110 +99,115 @@
          .validators{
              color:#d85656;
              font-size:small;
-             margin-left:4px;
              float:right;
 
          }
+         .validatorsSrch{
+             color:#d85656;
+             font-size:small;
+         }
           h3{
+            font-size:large;
             color:#424642;
             margin-bottom : 10px;
             margin-left:-10px;
           }
           .TxtFieldSearch{
-              height:29px;
-              width: 40%;
+              height:23px;
+              width: 38%;
               border-radius: 5px;
               font-family:Verdana;
           
           }
            .srchBtn{
-              height:32px;
-              width: auto;
+              height:29px;
+              width: 22%;
               border:none;
               border-radius: 5px;
               font-family:Verdana;
-          
+              margin-left: 10px;
+              background-color:#99ADE7;
+              float:right;
           }
-
-
-
-
-
+          .srchBtn:hover{
+              background-color:#88EDD5;
+          }
 
       </style>
 </head>
+
 <body>
 <form  runat="server">
 
     <div class="entryForm">
          <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
         <div class="headerContainer">
-            <h2>Instrutor's Entry Form</h2>
+            <h2>Enrollment Form</h2>
         </div>
 
 
         <div class="content">
 
-         
+        
        <div class="items">
-          <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtLname" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
-        <asp:Label Text="Search Student" CssClass="lblLName" runat="server" ></asp:Label>
-        <asp:TextBox CssClass="TxtFieldSearch" placeholder="ID Number" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TextBox1"></asp:TextBox> 
+        <asp:Label Text="Search Student" CssClass="lables" runat="server" ></asp:Label>
+        <asp:TextBox CssClass="TxtFieldSearch" placeholder="ID Number" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtSerchStud"></asp:TextBox> 
+        <asp:RequiredFieldValidator CssClass="validatorsSrch" ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtSerchStud" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
         <asp:Button CssClass="srchBtn" ID="srchBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White"  />
         </div>
 
-        <h3>Personal Information</h3>
+        <h3>Student</h3>
          <div class="items">
 
-        <asp:Label Text="Last Name " CssClass="lblLName" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtLname" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Last Name " CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtLname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
        <br /> <asp:TextBox CssClass="TxtField" placeholder="First Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtLname"></asp:TextBox> 
         </div>
 
         <div class="items">
-        <asp:Label Text="Fist Name " CssClass="lblFName" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator5" runat="server" ControlToValidate="TxtFname" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Fist Name " CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator5" runat="server" ControlToValidate="TxtFname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="First Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtFname"></asp:TextBox> 
         </div>
 
          <div class="items">
-        <asp:Label Text="Middle Name " CssClass="lblMName" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtMname" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Middle Name " CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtMname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="Middle Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtMname"></asp:TextBox> 
         </div>
 
          <div class="items">
-        <asp:Label Text="Gender " CssClass="lblGender" runat="server" ></asp:Label>
-               <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator3" runat="server" ControlToValidate="radlGender" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
-         <asp:RadioButtonList CssClass="radBtnGender" ID="radlGender" runat="server" RepeatDirection="Horizontal" Width="160px">
+        <asp:Label Text="Gender " CssClass="lables" runat="server" ></asp:Label>
+               <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator3" runat="server" ControlToValidate="radlGender" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
+         <asp:RadioButtonList CssClass="radBtnGender" ID="radlGender" runat="server" RepeatDirection="Horizontal" Width="160px" style="font-size: small">
              <asp:ListItem>Male</asp:ListItem>
              <asp:ListItem>Female</asp:ListItem>
              </asp:RadioButtonList>
         </div>
-        <h3>Address</h3>
+        <h3>Course</h3>
 
         <div class="items">
-        <asp:Label Text="Permanent Address" CssClass="lblPerAdd" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator6" runat="server" ControlToValidate="TxtPerAdd" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Permanent Address" CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator6" runat="server" ControlToValidate="TxtPerAdd" ErrorMessage="Required">*</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="Permanent Address" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtPerAdd"></asp:TextBox> 
         </div>
-        <h3>Educational Background</h3>
+        <h3>Instructor</h3>
 
           <div class="items">
-        <asp:Label Text="Elementary" CssClass="lblSchool" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator7" runat="server" ControlToValidate="TxtElem" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Elementary" CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator7" runat="server" ControlToValidate="TxtElem" ErrorMessage="Required">*</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtElem"></asp:TextBox> 
         </div>    
 
         <div class="items">
-        <asp:Label Text="Secondary" CssClass="lblSchool" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtJunHigh" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="Secondary" CssClass="lables" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtJunHigh" ErrorMessage="Required">*</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtJunHigh"></asp:TextBox> 
         </div>  
         
         <div class="items">
-        <asp:Label Text="College" CssClass="lblSchool" runat="server" ID="Label1" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator9" runat="server" ControlToValidate="TxtSenHigh" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
+        <asp:Label Text="College" CssClass="lables" runat="server" ID="Label1" ></asp:Label>
+             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator9" runat="server" ControlToValidate="TxtSenHigh" ErrorMessage="Required">*</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtSenHigh"></asp:TextBox> 
         </div>    
 

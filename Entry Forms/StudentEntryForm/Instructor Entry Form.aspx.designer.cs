@@ -130,13 +130,13 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
         
         /// <summary>
-        /// TxtJunHigh control.
+        /// TxtSec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtJunHigh;
+        protected global::System.Web.UI.WebControls.TextBox TxtSec;
         
         /// <summary>
         /// Label1 control.
@@ -157,21 +157,21 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
         
         /// <summary>
-        /// TxtSenHigh control.
+        /// TxtColle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtSenHigh;
+        protected global::System.Web.UI.WebControls.TextBox TxtColle;
         
         /// <summary>
-        /// AddStudentBtn control.
+        /// AddInst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddStudentBtn;
+        protected global::System.Web.UI.WebControls.Button AddInst;
     }
 }
