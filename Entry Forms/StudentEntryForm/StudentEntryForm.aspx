@@ -79,7 +79,7 @@
           .btnSubmit{
               text-align: center;
               padding: 15px 20px ;
-              margin-left: 20px;
+              margin-left: 10px;
           
                
           }
@@ -134,7 +134,7 @@
 
         <asp:Label Text="Last Name " CssClass="lblLName" runat="server" ></asp:Label>
              <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtLname" Display="Dynamic" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
-       <br /> <asp:TextBox CssClass="TxtField" placeholder="First Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtLname"></asp:TextBox> 
+       <br /> <asp:TextBox CssClass="TxtField" placeholder="Last Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtLname"></asp:TextBox> 
         </div>
 
         <div class="items">

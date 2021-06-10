@@ -29,7 +29,6 @@ Date: 3/30/2021
               left:50%;
               transform: translate(-50%,-50%);
               width:540px;
-
               padding:40px;
               border-radius: 10px;
               background:rgb(255, 255, 255);
@@ -83,7 +82,7 @@ Date: 3/30/2021
           .btnSubmit{
               text-align: center;
               padding: 15px 20px ;
-              margin-left: 20px;
+              margin-left: 5px;
           
                
           }
@@ -114,69 +113,13 @@ Date: 3/30/2021
             margin-left:-10px;
           }
           .DropDownList{
-            width:75%;
+            width:77%;
             margin-left: 5px;
             height: 29px;
             border-radius: 5px;
             font-family:Verdana;
+
           }
-
-          .backBtn{
-              position:absolute;
-              top:50%;
-              left:30%;
-              transform: translate(-50%,-30%);
-              height: 40px;
-              width: 70px;
-              border:none;
-              outline: none;
-              border-radius: 5px;
-              background-color: #99ADE7;
-              box-shadow: 0 0 30px #0e3134;
-              color:#0b1542;
-          }
-          .nextBtn{
-              position:absolute;
-              top:50%;
-              left:70%;
-              transform: translate(-50%,-70%);
-              height: 40px;
-              width: 70px;
-              border:none;
-              outline: none;
-              border-radius: 5px;
-              background-color: #99ADE7;
-              box-shadow: 0 0 30px #0e3134;
-              color:#0b1542;
-          }
-          .nextBtn:hover , .backBtn:hover{
-            
-          }
-
-
-
-
-
-
-          .auto-style1 {
-              border-style: none;
-              border-color: inherit;
-              border-width: medium;
-              position: absolute;
-              top: 50%;
-              left: 30%;
-              transform: translate(-50%,-30%);
-              height: 40px;
-              width: 70px;
-              outline: none;
-              border-radius: 5px;
-              background-color: #99ADE7;
-              box-shadow: 0 0 30px #0e3134;
-              color: #0b1542;
-              right: 844px;
-              background-color:#88EDD5;
-          }
-
 
 
 
@@ -200,17 +143,19 @@ Date: 3/30/2021
          <div class="items">
 
         <asp:Label Text="Course Code" CssClass="lable" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator ID="rfvCode" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtCode" Enabled="False"></asp:RequiredFieldValidator>
+             <asp:RequiredFieldValidator ID="rfvCode" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtCode" ></asp:RequiredFieldValidator>
        <br /> <asp:TextBox CssClass="TxtField" placeholder="Course Code" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtCode"></asp:TextBox> 
         </div>
 
         <div class="items">
         <asp:Label Text="Course" CssClass="lable" runat="server" ></asp:Label>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtCourse" ></asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="Course" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtCourse"></asp:TextBox> 
         </div>
 
          <div class="items">
         <asp:Label Text="Units" CssClass="lable" runat="server" ></asp:Label>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtUnit" ></asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="Units" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtUnit"></asp:TextBox> 
         </div>
 
@@ -233,8 +178,6 @@ Date: 3/30/2021
          </div>
          </div>
     </div>
-             <asp:Button CssClass="auto-style1" ID="backBtn" runat="server" Text="Back" Font-Bold="True" OnClick="backBtn_Click"/>  
-             <asp:Button CssClass="nextBtn" ID="nextBtn" runat="server" Text="Next" Font-Bold="True" OnClick="nextBtn_Click"/>
  </form>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
+<title>Entry Entry Form</title>
        <style>
           body{
      
@@ -146,40 +147,38 @@
         </div>
 
 
-        <div class="content">
-
-        
+       <div class="content">
        <div class="items">
         <asp:Label Text="Search Student" CssClass="lables" runat="server" ></asp:Label>
-        <asp:TextBox CssClass="TxtFieldSearch" placeholder="ID Number" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtSerchStud"></asp:TextBox> 
-        <asp:RequiredFieldValidator CssClass="validatorsSrch" ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtSerchStud" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-        <asp:Button CssClass="srchBtn" ID="srchBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White"  />
+        <asp:TextBox CssClass="TxtFieldSearch" placeholder="ID Number" runat="server" BorderWidth="1px" BorderColor="#424642" ID="searchId"></asp:TextBox> 
+        <asp:RequiredFieldValidator CssClass="validatorsSrch" ID="RequiredFieldValidator1" runat="server" ControlToValidate="searchId" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
+        <asp:Button CssClass="srchBtn" ID="srchStudBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White" OnClick="srchStudBtn_Click"  />
         </div>
+       </div>
+
+
+        <div runat="server" id="theDiv" class="content">
 
         <h3>Student</h3>
          <div class="items">
 
         <asp:Label Text="Last Name " CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtLname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       <br /> <asp:TextBox CssClass="TxtField" placeholder="First Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtLname"></asp:TextBox> 
+       <br /> <asp:TextBox CssClass="TxtField" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtLname" Enabled="False"></asp:TextBox> 
         </div>
 
         <div class="items">
         <asp:Label Text="Fist Name " CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator5" runat="server" ControlToValidate="TxtFname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-        <br /> <asp:TextBox CssClass="TxtField" placeholder="First Name" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtFname"></asp:TextBox> 
+         <br /> <asp:TextBox CssClass="TxtField"  runat="server" BorderWidth="1px" BorderColor="#424642" Enabled="False" ID="TxtFname"></asp:TextBox> 
         </div>
 
          <div class="items">
         <asp:Label Text="Middle Name " CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtMname" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-        <br /> <asp:TextBox CssClass="TxtField" placeholder="Middle Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtMname"></asp:TextBox> 
+        <br /> <asp:TextBox CssClass="TxtField" runat="server" BorderWidth="1px" BorderColor="#424642" Enabled="False" BorderStyle="Solid" ID="TxtMname"></asp:TextBox> 
         </div>
 
          <div class="items">
         <asp:Label Text="Gender " CssClass="lables" runat="server" ></asp:Label>
-               <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator3" runat="server" ControlToValidate="radlGender" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-         <asp:RadioButtonList CssClass="radBtnGender" ID="radlGender" runat="server" RepeatDirection="Horizontal" Width="160px" style="font-size: small">
+        <asp:RadioButtonList CssClass="radBtnGender" ID="radlGender" runat="server" Enabled="False" RepeatDirection="Horizontal" Width="160px" style="font-size: small">
              <asp:ListItem>Male</asp:ListItem>
              <asp:ListItem>Female</asp:ListItem>
              </asp:RadioButtonList>
@@ -187,9 +186,8 @@
         <h3>Course</h3>
 
         <div class="items">
-        <asp:Label Text="Permanent Address" CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator6" runat="server" ControlToValidate="TxtPerAdd" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       <br />  <asp:TextBox CssClass="TxtField" placeholder="Permanent Address" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtPerAdd"></asp:TextBox> 
+        <asp:Label Text="Course" CssClass="lables" runat="server" ></asp:Label>
+       <br />  
         </div>
         <h3>Instructor</h3>
 
