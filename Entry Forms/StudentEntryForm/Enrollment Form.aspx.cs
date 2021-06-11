@@ -166,7 +166,8 @@ namespace StudentEntryForm
             ddlInstruc.DataTextField = ds.Tables[0].Columns["INST_FULLNAME"].ToString(); // text field name of table dispalyed in dropdown       
             ddlInstruc.DataValueField = ds.Tables[0].Columns["INST_IDNUM"].ToString();
             // to retrive specific  textfield name   
-            ddlInstruc.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
+            ddlInstruc.DataSource = ds.Tables[0]; 
+            //assigning datasource to the dropdownlist  
             ddlInstruc.DataBind();  //binding dropdownlist  
 
         }
