@@ -62,6 +62,10 @@
               color: #424642;
               font-size:small;
           }
+          .lableProg, .lableSem{
+              margin-left:28px;
+          }
+          
 
           .content{
               padding: 0 60px;
@@ -75,13 +79,33 @@
               border-radius: 5px;
               font-family:Verdana;
           }
+          .TxtUnits{
+              width:20%;
+          }
+          .DDL{
+
+              height:27px;
+              width:65%;
+              border-radius: 5px;
+              font-family:Verdana;
+          }
+          .DLLINST{
+              width:58%;
+          }
+          .DLLProg{
+              width:40%;
+          }
+          .DLLYear{
+              width:12%;
+          }
+          .DLLSem{
+              width:39%;
+          }
 
           .btnSubmit{
               text-align: center;
               padding: 15px 20px ;
-              margin-left: 20px;
-          
-               
+
           }
           .btnSbmt{
               width:100%;
@@ -114,15 +138,23 @@
             margin-left:-10px;
           }
           .TxtFieldSearch{
-              height:23px;
-              width: 38%;
+              height:25px;
+              width: 50%;
               border-radius: 5px;
               font-family:Verdana;
+              padding-left:6px;
           
+          }
+          .slctCrsBtn{
+              height:27px;
+              width:20%;
+              border-radius: 5px;
+              font-family:Verdana;
+              float:right;
           }
            .srchBtn{
               height:29px;
-              width: 22%;
+              width: 27%;
               border:none;
               border-radius: 5px;
               font-family:Verdana;
@@ -149,7 +181,7 @@
 
        <div class="content">
        <div class="items">
-        <asp:Label Text="Search Student" CssClass="lables" runat="server" ></asp:Label>
+        <asp:Label Text="Student" CssClass="lables" runat="server" ></asp:Label>
         <asp:TextBox CssClass="TxtFieldSearch" placeholder="ID Number" runat="server" BorderWidth="1px" BorderColor="#424642" ID="searchId"></asp:TextBox> 
         <asp:RequiredFieldValidator CssClass="validatorsSrch" ID="RequiredFieldValidator1" runat="server" ControlToValidate="searchId" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
         <asp:Button CssClass="srchBtn" ID="srchStudBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White" OnClick="srchStudBtn_Click"  />
@@ -187,30 +219,38 @@
 
         <div class="items">
         <asp:Label Text="Course" CssClass="lables" runat="server" ></asp:Label>
-       <br />  
+        <asp:DropDownList CssClass="DDL" ID="ddlCourse" runat="server" ></asp:DropDownList>
+        <asp:Button CssClass="slctCrsBtn" ID="selectCour" runat="server" Text="Select" OnClick="selectCour_Click"  />
         </div>
-        <h3>Instructor</h3>
-
-          <div class="items">
-        <asp:Label Text="Elementary" CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator7" runat="server" ControlToValidate="TxtElem" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtElem"></asp:TextBox> 
-        </div>    
-
-        <div class="items">
-        <asp:Label Text="Secondary" CssClass="lables" runat="server" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator8" runat="server" ControlToValidate="TxtJunHigh" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtJunHigh"></asp:TextBox> 
-        </div>  
         
         <div class="items">
-        <asp:Label Text="College" CssClass="lables" runat="server" ID="Label1" ></asp:Label>
-             <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator9" runat="server" ControlToValidate="TxtSenHigh" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtSenHigh"></asp:TextBox> 
-        </div>    
+        <asp:Label Text="Units" CssClass="lables" runat="server" ></asp:Label>
+       <asp:TextBox CssClass="TxtField TxtUnits" Enabled="False" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtUnit"></asp:TextBox> 
+
+        <asp:Label Text="Schedule" CssClass="lables lableProg" runat="server" ></asp:Label>
+        <asp:DropDownList CssClass="DDL DLLProg" ID="ddlCourProg" runat="server"></asp:DropDownList>
+
+        </div> 
+         <div class="items">
+        <asp:Label Text="Year Level" CssClass="lables" runat="server" ></asp:Label>
+        <asp:DropDownList CssClass="DDL DLLYear" ID="ddlCourYrLvl" runat="server"></asp:DropDownList>
+        <asp:Label Text="Semester" CssClass="lables lableSem" runat="server" ></asp:Label>
+        <asp:DropDownList CssClass="DDL DLLSem" ID="ddlCourSem" runat="server"> 
+            </asp:DropDownList>
+        </div> 
+
+
+        <h3>Instructor</h3>
+
+         <div class="items">
+        <asp:Label Text="Instrcutor" CssClass="lables" runat="server" ></asp:Label>
+        <asp:DropDownList CssClass="DDL DLLINST" ID="ddlInstruc" runat="server" ></asp:DropDownList>
+        <asp:Button CssClass="slctCrsBtn" ID="srchInsttuc" runat="server" Text="Select" OnClick="srchInsttuc_Click" />
+        </div>
+
 
          <div class="btnSubmit">
-         <asp:Button CssClass="btnSbmt" ID="AddStudentBtn" runat="server" Text="ADD INSTRUCTOR" Font-Bold="True" ForeColor="White"  />
+         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White"  />
 
             </div>
          </div>

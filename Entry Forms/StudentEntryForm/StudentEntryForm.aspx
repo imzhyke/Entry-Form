@@ -184,7 +184,7 @@
         </div>  
         
         <div class="items">
-        <asp:Label Text="Senior Hig" CssClass="lblSchool" runat="server" ></asp:Label>
+        <asp:Label Text="Senior High" CssClass="lblSchool" runat="server" ></asp:Label>
              <asp:RequiredFieldValidator CssClass="validators" ID="RequiredFieldValidator9" runat="server" ControlToValidate="TxtSenHigh" ErrorMessage="Required">Missing</asp:RequiredFieldValidator>
        <br />  <asp:TextBox CssClass="TxtField" placeholder="School Name" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtSenHigh"></asp:TextBox> 
         </div>    

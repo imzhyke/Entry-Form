@@ -24,6 +24,7 @@ namespace StudentEntryForm
             string Lname = TxtLname.Text;
             string Fname = TxtFname.Text;
             string Mname = TxtMname.Text;
+            string FullName = String.Concat(Lname, ", ", Fname, " ",Mname.Substring(0,1),".");
             string gender = radlGender.SelectedValue;
             string email = String.Concat(Fname.ToLower(), ".", Lname.ToLower(), "@ctu.edu.ph");
             string permAdd = TxtPerAdd.Text;
@@ -35,13 +36,11 @@ namespace StudentEntryForm
 
             using (SqlConnection con = new SqlConnection(constring))
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO INST_ENTRY_TABLE(INST_LASTNAME, INST_FIRSTNAME, INST_MIDDLENAME, INST_EMAIL, INST_GENDER, INST_PERADD, INST_ELEM, INST_SEC, INST_COLLE) " +
-                    "VALUES (@last, @first, @middle, @email, @gender,@permanent, @elem, @sec, @college)", con))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO INST_ENTRY_TABLE(INST_FULLNAME, INST_EMAIL, INST_GENDER, INST_PERADD, INST_ELEM, INST_SEC, INST_COLLE) " +
+                    "VALUES (@fullname, @email, @gender,@permanent, @elem, @sec, @college)", con))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@last", Lname);
-                    cmd.Parameters.AddWithValue("@first", Fname);
-                    cmd.Parameters.AddWithValue("@middle", Mname);
+                    cmd.Parameters.AddWithValue("@fullname", FullName);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@gender", gender);
                     cmd.Parameters.AddWithValue("@permanent", permAdd);
@@ -69,7 +68,7 @@ namespace StudentEntryForm
                         {
                             cmd.CommandType = CommandType.Text;
 
-                            cmd.CommandText = "SELECT * FROM INST_ENTRY_TABLE WHERE INST_LASTNAME = '" + Lname + "' AND  INST_FIRSTNAME   = '" + Fname + "' ";
+                            cmd.CommandText = "SELECT * FROM INST_ENTRY_TABLE WHERE INST_FULLNAME = '" + FullName+ "' ";
                             SqlDataReader rdr = cmd.ExecuteReader();
                             if (rdr.Read())
                             {

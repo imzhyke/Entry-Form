@@ -85,75 +85,84 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.WebControls.RadioButtonList radlGender;
         
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// ddlCourse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourse;
         
         /// <summary>
-        /// TxtElem control.
+        /// selectCour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtElem;
+        protected global::System.Web.UI.WebControls.Button selectCour;
         
         /// <summary>
-        /// RequiredFieldValidator8 control.
+        /// TxtUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        protected global::System.Web.UI.WebControls.TextBox TxtUnit;
         
         /// <summary>
-        /// TxtJunHigh control.
+        /// ddlCourProg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtJunHigh;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourProg;
         
         /// <summary>
-        /// Label1 control.
+        /// ddlCourYrLvl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourYrLvl;
         
         /// <summary>
-        /// RequiredFieldValidator9 control.
+        /// ddlCourSem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourSem;
         
         /// <summary>
-        /// TxtSenHigh control.
+        /// ddlInstruc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtSenHigh;
+        protected global::System.Web.UI.WebControls.DropDownList ddlInstruc;
         
         /// <summary>
-        /// AddStudentBtn control.
+        /// srchInsttuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddStudentBtn;
+        protected global::System.Web.UI.WebControls.Button srchInsttuc;
+        
+        /// <summary>
+        /// EnrollStud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EnrollStud;
     }
 }

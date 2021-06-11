@@ -23,17 +23,19 @@ namespace StudentEntryForm
         {
             string Code = TxtCode.Text;
             string Course = TxtCourse.Text;
+            string Years = ddlYear.SelectedValue;
             string Unit = TxtUnit.Text;
             string Program = ddlProg.SelectedValue;
 
             using (SqlConnection con = new SqlConnection(constring))
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO COUR_ENTRY_TABLE(COUR_CODE, COUR_COUR, COUR_UNIT, COUR_PROG) " +
-                    "VALUES (@code, @course, @unit, @program)", con))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO COUR_ENTRY_TABLE(COUR_CODE, COUR_DESC, COUR_YEAR, COUR_UNIT, COUR_PROG) " +
+                    "VALUES (@code, @course, @year, @unit, @program)", con))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@code", Code);
                     cmd.Parameters.AddWithValue("@course", Course);
+                    cmd.Parameters.AddWithValue("@year", Years);
                     cmd.Parameters.AddWithValue("@unit", Unit);
                     cmd.Parameters.AddWithValue("@program", Program);
                     con.Open();
@@ -45,7 +47,8 @@ namespace StudentEntryForm
                         Response.Write("<script>alert ('NEW COURSE HAS BEEN ADDED!\\n" +
                             "Course Code: "+Code+"\\n" +
                             "Course: "+Course+"\\n" +
-                            "Unit: "+Unit+"\\n" +
+                            "Years: " + Years + "\\n" +
+                            "Unit: " +Unit+"\\n" +
                             "Program: "+Program+"')</script>");
                     }
                     else 

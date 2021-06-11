@@ -120,6 +120,15 @@ Date: 3/30/2021
             font-family:Verdana;
 
           }
+          .ddlYear{
+              width:15%;
+          }
+          .lblProg{
+              margin-left: 25px;
+          }
+          .ddlProg{
+              width:38%;
+          }
 
 
 
@@ -148,7 +157,7 @@ Date: 3/30/2021
         </div>
 
         <div class="items">
-        <asp:Label Text="Course" CssClass="lable" runat="server" ></asp:Label>
+        <asp:Label Text="Course Description" CssClass="lable" runat="server" ></asp:Label>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtCourse" ></asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="Course" runat="server" BorderWidth="1px" BorderColor="#424642" ID="TxtCourse"></asp:TextBox> 
         </div>
@@ -158,13 +167,16 @@ Date: 3/30/2021
              <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="validators" ErrorMessage="Missing" ControlToValidate="TxtUnit" ></asp:RequiredFieldValidator>
         <br /> <asp:TextBox CssClass="TxtField" placeholder="Units" runat="server" BorderWidth="1px" BorderColor="#424642" BorderStyle="Solid" ID="TxtUnit"></asp:TextBox> 
         </div>
-
         
-      
-        <div class="items">
-          
-            <asp:Label Text="Program" CssClass="lable" runat="server" ></asp:Label>
-            <asp:DropDownList  CssClass="DropDownList" ID="ddlProg" runat="server">
+            <div class="items">
+       <asp:Label Text="Years" CssClass="lable" runat="server" ></asp:Label>
+            <asp:DropDownList  CssClass="DropDownList ddlYear" ID="ddlYear" runat="server">
+                <asp:ListItem>2</asp:ListItem>
+                <asp:ListItem>4</asp:ListItem>
+            </asp:DropDownList>
+       
+            <asp:Label Text="Program" CssClass="lable lblProg" runat="server" ></asp:Label>
+            <asp:DropDownList  CssClass="DropDownList ddlProg" ID="ddlProg" runat="server">
                 <asp:ListItem>Day</asp:ListItem>
                 <asp:ListItem>Evening</asp:ListItem>
                 <asp:ListItem>Day &amp; Evening</asp:ListItem>
