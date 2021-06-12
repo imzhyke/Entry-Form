@@ -90,7 +90,8 @@
               font-family:Verdana;
           }
           .DLLINST{
-              width:58%;
+              width:76%;
+              float:right;
           }
           .DLLProg{
               width:40%;
@@ -245,12 +246,11 @@
          <div class="items">
         <asp:Label Text="Instrcutor" CssClass="lables" runat="server" ></asp:Label>
         <asp:DropDownList CssClass="DDL DLLINST" ID="ddlInstruc" runat="server" ></asp:DropDownList>
-        <asp:Button CssClass="slctCrsBtn" ID="srchInsttuc" runat="server" Text="Select" OnClick="srchInsttuc_Click" />
         </div>
 
 
-         <div class="btnSubmit">
-         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White"  />
+         <div runat="server" id="enrolDiv" class="btnSubmit">
+         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White" OnClick="EnrollStud_Click"  />
 
             </div>
          </div>

@@ -148,13 +148,13 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.WebControls.DropDownList ddlInstruc;
         
         /// <summary>
-        /// srchInsttuc control.
+        /// enrolDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button srchInsttuc;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl enrolDiv;
         
         /// <summary>
         /// EnrollStud control.
