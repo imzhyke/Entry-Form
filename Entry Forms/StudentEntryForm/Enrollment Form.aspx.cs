@@ -33,7 +33,6 @@ namespace StudentEntryForm
 
             theDiv.Visible = false;
 
-
         }
         public void buttonShow()
         {
@@ -54,7 +53,14 @@ namespace StudentEntryForm
         protected void srchStudBtn_Click(object sender, EventArgs e)
         {
             studID = searchId.Text;
-            present=statusCheck();
+            ddlCourse.Items.Clear();
+            ddlCourProg.Items.Clear();
+            ddlCourYrLvl.Items.Clear();
+            ddlCourSem.Items.Clear();
+            ddlInstruc.Items.Clear();
+            TxtUnit.Text = "";
+
+            present =statusCheck();
             buttonShow();
 
             using (SqlConnection con = new SqlConnection(constring))
@@ -122,9 +128,10 @@ namespace StudentEntryForm
 
 
                                                     ddlCourse.SelectedIndex = ddlCourse.Items.IndexOf(ddlCourse.Items.FindByValue(enrCourCode));
-                                                    ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue(enrCourCode));
+                                                    ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue(enrSched));
                                                     ddlCourYrLvl.SelectedIndex = ddlCourYrLvl.Items.IndexOf(ddlCourYrLvl.Items.FindByValue(enrYrLvl));
-                                                    ddlCourSem.SelectedIndex = ddlCourSem.Items.IndexOf(ddlCourSem.Items.FindByValue(enrCourCode));
+                                                    ddlCourSem.SelectedIndex = ddlCourSem.Items.IndexOf(ddlCourSem.Items.FindByValue(enrSem));
+                                                    ddlInstruc.SelectedIndex = ddlInstruc.Items.IndexOf(ddlInstruc.Items.FindByValue(enrInstID));
 
                                                 }
                                             }
