@@ -81,7 +81,44 @@ namespace StudentEntryForm
                                         radlGender.SelectedIndex = 1;
                                     }
 
-                                if (present) { }
+                                if (present) {
+                                    showCourData();
+
+                                    String enrCourCode, enrSched, enrSem, enrYrLvl, enrInstID, enrStatus;
+
+                                    try
+                                    {
+                                        using (var dbS = new SqlConnection(constring))
+                                        {
+                                            db.Open();
+                                            using (var cmdS = db.CreateCommand())
+                                            {
+                                                cmdS.CommandType = CommandType.Text;
+
+                                                cmd.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + studID + "' ";
+                                                SqlDataReader rdrS = cmdS.ExecuteReader();
+                                                if (rdrS.Read())
+                                                {
+                                                    enrCourCode = rdrS["ENRL_COUR_CODE"].ToString();
+                                                    enrSched = rdrS["ENRL_SCHED"].ToString();
+                                                    enrYrLvl = rdrS["ENRL_YRLVL"].ToString();
+                                                    enrSem = rdrS["ENRL_SEM"].ToString();
+                                                    enrInstID = rdrS["ENRL_INST_IDNUM"].ToString();
+                                                    enrStatus = rdrS["ENRL_STUD_IDNUM"].ToString();
+
+                                                    ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue("PassedValue"));
+                                                    TxtUnit.Text = rdrS["COUR_UNIT"].ToString();
+                                                    courProg = rdrS["COUR_PROG"].ToString();
+                                                    string strYr = rdrS["COUR_YEAR"].ToString();
+                                                    years = Convert.ToInt32(strYr);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+                                }
 
                                 else
                                 {
