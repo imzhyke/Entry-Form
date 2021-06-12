@@ -33,23 +33,29 @@ namespace StudentEntryForm
 
             theDiv.Visible = false;
 
+
+        }
+        public void buttonShow()
+        {
             if (present)
             {
                 withDiv.Visible = true;
                 enrolDiv.Visible = false;
+
             }
             else
             {
-                enrolDiv.Visible = true;
                 withDiv.Visible = false;
+                enrolDiv.Visible = true;
             }
-
         }
+
 
         protected void srchStudBtn_Click(object sender, EventArgs e)
         {
             studID = searchId.Text;
-            statusCheck();
+            present=statusCheck();
+            buttonShow();
 
             using (SqlConnection con = new SqlConnection(constring))
             {
@@ -82,20 +88,24 @@ namespace StudentEntryForm
                                     }
 
                                 if (present) {
-                                    showCourData();
 
+                                    
+                                    
                                     String enrCourCode, enrSched, enrSem, enrYrLvl, enrInstID, enrStatus;
 
                                     try
                                     {
                                         using (var dbS = new SqlConnection(constring))
                                         {
-                                            db.Open();
-                                            using (var cmdS = db.CreateCommand())
+                                            dbS.Open();
+                                            using (var cmdS = dbS.CreateCommand())
                                             {
                                                 cmdS.CommandType = CommandType.Text;
 
-                                                cmd.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + studID + "' ";
+
+
+
+                                                cmdS.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + studID + "' ";
                                                 SqlDataReader rdrS = cmdS.ExecuteReader();
                                                 if (rdrS.Read())
                                                 {
@@ -105,6 +115,11 @@ namespace StudentEntryForm
                                                     enrSem = rdrS["ENRL_SEM"].ToString();
                                                     enrInstID = rdrS["ENRL_INST_IDNUM"].ToString();
                                                     enrStatus = rdrS["ENRL_STUD_IDNUM"].ToString();
+
+                                                    showCourData();
+                                                    showSchedSemYrLvl(enrCourCode);
+                                                    showInstructors();
+
 
                                                     ddlCourse.SelectedIndex = ddlCourse.Items.IndexOf(ddlCourse.Items.FindByValue(enrCourCode));
                                                     ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue(enrCourCode));
@@ -157,14 +172,17 @@ namespace StudentEntryForm
             ddlCourse.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
             ddlCourse.DataBind();  //binding dropdownlist  
 
- 
         }
 
         protected void selectCour_Click(object sender, EventArgs e)
         {
             theDiv.Visible = Visible;
-            courCode = ddlCourse.SelectedValue;
+            showSchedSemYrLvl(ddlCourse.SelectedValue);
+            showInstructors();
+        }
 
+        public void showSchedSemYrLvl(string CoCode)
+        {
             try
             {
                 using (var db = new SqlConnection(constring))
@@ -174,7 +192,7 @@ namespace StudentEntryForm
                     {
                         cmd.CommandType = CommandType.Text;
 
-                        cmd.CommandText = "SELECT * FROM COUR_ENTRY_TABLE WHERE COUR_CODE = '" + courCode + "' ";
+                        cmd.CommandText = "SELECT * FROM COUR_ENTRY_TABLE WHERE COUR_CODE = '" + CoCode + "' ";
                         SqlDataReader rdr = cmd.ExecuteReader();
                         if (rdr.Read())
                         {
@@ -216,8 +234,6 @@ namespace StudentEntryForm
             ddlCourSem.Items.Clear();
             ddlCourSem.Items.Add(new ListItem("First Semester", "1"));
             ddlCourSem.Items.Add(new ListItem("Second Semester", "2"));
-
-            showInstructors();
         }
 
 
@@ -250,52 +266,52 @@ namespace StudentEntryForm
             yrlvl = ddlCourYrLvl.SelectedValue;
             sem = ddlCourSem.SelectedValue;
             status = "Enrolled";
-            Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
-                "Course Code: "+courCode+"\\n" +
-                "Sched: "+courSched+"\\n" +
-                "Sem: "+sem+"\\n" +
-                "Status: "+status+"\\n" +
-                "Instructor: "+instID+"')</script>");
-            //using (SqlConnection con = new SqlConnection(constring))
-            //{
-            //    using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
-            //        "ENRL_STUD_IDNUM, " +
-            //        "ENRL_COUR_CODE, " +
-            //        "ENRL_SCHED, " +
-            //        "ENRL_YRLVL, " +
-            //        "ENRL_SEM, " +
-            //        "ENRL_INST_IDNUM, " +
-            //        "ENRL_STUD_STATUS) " +
-            //        "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
-            //    {
-            //        cmd.CommandType = CommandType.Text;
-            //        cmd.Parameters.AddWithValue("@studNum", studID);
-            //        cmd.Parameters.AddWithValue("@courCode", courCode);
-            //        cmd.Parameters.AddWithValue("@sched", courSched);
-            //        cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
-            //        cmd.Parameters.AddWithValue("@sem", sem);
-            //        cmd.Parameters.AddWithValue("@instId", instID);
-            //        cmd.Parameters.AddWithValue("@status", status);
-            //        con.Open();
+            //Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
+            //    "Course Code: "+courCode+"\\n" +
+            //    "Sched: "+courSched+"\\n" +
+            //    "Sem: "+sem+"\\n" +
+            //    "Status: "+status+"\\n" +
+            //    "Instructor: "+instID+"')</script>");
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
+                    "ENRL_STUD_IDNUM, " +
+                    "ENRL_COUR_CODE, " +
+                    "ENRL_SCHED, " +
+                    "ENRL_YRLVL, " +
+                    "ENRL_SEM, " +
+                    "ENRL_INST_IDNUM, " +
+                    "ENRL_STUD_STATUS) " +
+                    "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@studNum", studID);
+                    cmd.Parameters.AddWithValue("@courCode", courCode);
+                    cmd.Parameters.AddWithValue("@sched", courSched);
+                    cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
+                    cmd.Parameters.AddWithValue("@sem", sem);
+                    cmd.Parameters.AddWithValue("@instId", instID);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    con.Open();
 
-            //        int rowsThatAffected = cmd.ExecuteNonQuery();
+                    int rowsThatAffected = cmd.ExecuteNonQuery();
 
-            //        if (rowsThatAffected >= 1)
-            //        {
-            //            Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN ENROLLED!')</script>");
-            //        }
+                    if (rowsThatAffected >= 1)
+                    {
+                        Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN ENROLLED!')</script>");
+                    }
 
-            //        con.Close();
-            //    }
+                    con.Close();
+                }
 
-            //}
+            }
 
         }
         
 
     
 
-        public void statusCheck()
+        public bool statusCheck()
         {
             using (SqlConnection con = new SqlConnection(constring))
             {
@@ -312,13 +328,14 @@ namespace StudentEntryForm
                             SqlDataReader rdr = cmd.ExecuteReader();
                             if (rdr.Read())
                             {
-
                                 present = true;
-
+                                
+                                
                             }
                             else
                             {
                                 present = false;
+                               
                             }
 
                         }
@@ -330,6 +347,7 @@ namespace StudentEntryForm
                 {
                 }
             }
+            return present;
         }
     }
 }
