@@ -116,7 +116,7 @@
               color:snow;
           }
           .btnUpdate{
-              width:45%;
+              width:60%;
               height: 50px;
               border:none;
               outline: none;
@@ -241,7 +241,10 @@
              <h3>Status</h3>
              <div class="items">
             <asp:Label Text="Enrollment Status" CssClass="lables" runat="server" ></asp:Label>
-            <asp:DropDownList CssClass="DDL DDLStatus" ID="ddlStatus" runat="server" ></asp:DropDownList>
+            <asp:DropDownList CssClass="DDL DDLStatus" ID="ddlStatus" runat="server" >
+                <asp:ListItem Selected="True">Enrolled</asp:ListItem>
+                <asp:ListItem>Withdrawn</asp:ListItem>
+                 </asp:DropDownList>
             </div>
 
           </div>
@@ -313,8 +316,8 @@
          <div runat="server" id="withDiv" class="updatDiv btnSubmit">
 
          <asp:Button CssClass="btnUpdate" ID="btnUpdate" runat="server" Text="Update" Font-Bold="True" ForeColor="White" OnClick="btnUpdate_Click" />
-         <asp:Button CssClass="btnWdrw" ID="btnWidraw" runat="server" Text="Withdraw" Font-Bold="True" ForeColor="White"  />
-         <asp:Button CssClass="btnDel" ID="btnDel" runat="server" Text="Delete" Font-Bold="True" ForeColor="White" />
+         <%--<asp:Button CssClass="btnWdrw" ID="btnWidraw" runat="server" Text="Withdraw" Font-Bold="True" ForeColor="White"  />--%>
+         <asp:Button CssClass="btnDel" ID="btnDel" runat="server" Text="Delete" Font-Bold="True" ForeColor="White" OnClick="btnDel_Click" />
          </div>
 
          </div>

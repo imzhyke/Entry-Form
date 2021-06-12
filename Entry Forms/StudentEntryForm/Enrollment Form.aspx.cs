@@ -277,7 +277,7 @@ namespace StudentEntryForm
             courSched = ddlCourProg.SelectedValue;
             yrlvl = ddlCourYrLvl.SelectedValue;
             sem = ddlCourSem.SelectedValue;
-            status = "Enrolled";
+            status = ddlStatus.SelectedValue; 
             //Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
             //    "Course Code: "+courCode+"\\n" +
             //    "Sched: "+courSched+"\\n" +
@@ -370,7 +370,7 @@ namespace StudentEntryForm
             string ScourSched = ddlCourProg.SelectedValue + " ";
             yrlvl = ddlCourYrLvl.SelectedValue;
             sem = ddlCourSem.SelectedValue;
-            status = "Enrolled";
+            status = ddlStatus.SelectedValue;
 
 
 
@@ -433,6 +433,24 @@ namespace StudentEntryForm
 
             }
             theDiv.Visible = true;
+        }
+
+        protected void btnDel_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conx = new SqlConnection(constring))
+            {
+                studID = searchId.Text;
+                string query = "DELETE FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = " + studID + "";
+                conx.Open();
+                SqlCommand cmd = new SqlCommand(query, conx);
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected >= 1)
+                {
+                    Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN DELETED!')</script>");
+                }
+                conx.Close();
+
+            }
         }
     }
 }

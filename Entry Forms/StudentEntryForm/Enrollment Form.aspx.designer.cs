@@ -202,15 +202,6 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btnWidraw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnWidraw;
-        
-        /// <summary>
         /// btnDel control.
         /// </summary>
         /// <remarks>
