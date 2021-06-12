@@ -119,9 +119,58 @@
               color:snow;
      
           }
+          .btnUpdate{
+              width:45%;
+              height: 50px;
+              border:none;
+              outline: none;
+              border-radius: 5px;
+              font-size: medium;
+              color:snow;
+              background-color:#99ADE7;
+              float:left;
+          }
+           .btnUpdate:hover {
+               background-color:#926ee0;
+           }
+          .btnWdrw{
+              width:26%;
+              height: 50px;
+              border:none;
+              outline: none;
+              border-radius: 5px;
+              font-size: medium;
+              color:snow;
+              background-color:#7ca1d9;
+          }
+          .btnWdrw:hover{
+              background-color:#21459e;
+          }
+          .btnDel{
+              width:26%;
+              height: 50px;
+              border:none;
+              outline: none;
+              border-radius: 5px;
+              font-size: medium;
+              color:snow;
+              background-color:#eba7ab;
+              float:right;
+          }
+          .btnDel:hover{
+              background-color:#eb3844;
+          }
          .btnSbmt:hover {
              background-image:linear-gradient(to left, #99ADE7,#99ADE7);
            }
+         .updateDiv{
+             justify-content: space-between;
+             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+         }
+         .btnDel{
+         }
          .validators{
              color:#d85656;
              font-size:small;
@@ -140,7 +189,7 @@
           }
           .TxtFieldSearch{
               height:25px;
-              width: 50%;
+              width: 48%;
               border-radius: 5px;
               font-family:Verdana;
               padding-left:6px;
@@ -250,9 +299,16 @@
 
 
          <div runat="server" id="enrolDiv" class="btnSubmit">
-         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White" OnClick="EnrollStud_Click"  />
+         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White"   />
+         </div>
 
-            </div>
+         <div runat="server" id="withDiv" class="updatDiv btnSubmit">
+
+         <asp:Button CssClass="btnUpdate" ID="btnUpdate" runat="server" Text="Update" Font-Bold="True" ForeColor="White" />
+         <asp:Button CssClass="btnWdrw" ID="btnWidraw" runat="server" Text="Withdraw" Font-Bold="True" ForeColor="White"  />
+         <asp:Button CssClass="btnDel" ID="btnDel" runat="server" Text="Delete" Font-Bold="True" ForeColor="White" />
+         </div>
+
          </div>
     </div>
  </form>

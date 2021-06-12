@@ -26,19 +26,22 @@ namespace StudentEntryForm
 
         int years;
 
-        bool present;
+        bool present = false, ShowForm;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             theDiv.Visible = false;
 
             if (present)
             {
-
+                withDiv.Visible = true;
+                enrolDiv.Visible = false;
             }
             else
             {
-
+                enrolDiv.Visible = true;
+                withDiv.Visible = false;
             }
 
         }
@@ -63,11 +66,8 @@ namespace StudentEntryForm
                             SqlDataReader rdr = cmd.ExecuteReader();
                             if (rdr.Read())
                             {
-                                if (present) { }
-
-                                else
-                                {
-
+                                    
+                                    theDiv.Visible = true;
                                     TxtLname.Text = rdr["STUD_LASTNAME"].ToString();
                                     TxtFname.Text = rdr["STUD_FIRSTNAME"].ToString();
                                     TxtMname.Text = rdr["STUD_MIDDLENAME"].ToString();
@@ -80,6 +80,12 @@ namespace StudentEntryForm
                                     {
                                         radlGender.SelectedIndex = 1;
                                     }
+
+                                if (present) { }
+
+                                else
+                                {
+                                    
                                     showCourData();
                                 }
                             }
@@ -114,7 +120,7 @@ namespace StudentEntryForm
             ddlCourse.DataSource = ds.Tables[0];      //assigning datasource to the dropdownlist  
             ddlCourse.DataBind();  //binding dropdownlist  
 
-
+ 
         }
 
         protected void selectCour_Click(object sender, EventArgs e)
@@ -202,7 +208,6 @@ namespace StudentEntryForm
         }
         public void statusCheck()
         {
-            string idnum = searchId.Text;
             using (SqlConnection con = new SqlConnection(constring))
             {
                 try
@@ -214,7 +219,7 @@ namespace StudentEntryForm
                         {
                             cmd.CommandType = CommandType.Text;
 
-                            cmd.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + idnum + "' ";
+                            cmd.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + studID + "' ";
                             SqlDataReader rdr = cmd.ExecuteReader();
                             if (rdr.Read())
                             {
