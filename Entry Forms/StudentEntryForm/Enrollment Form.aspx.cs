@@ -17,6 +17,7 @@ namespace StudentEntryForm
         string courCode;
         string courProg;
         int years;
+        bool present;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,19 +45,28 @@ namespace StudentEntryForm
                             if (rdr.Read())
                             {
                                 theDiv.Visible = Visible;
-                                TxtLname.Text = rdr["STUD_LASTNAME"].ToString();
-                                TxtFname.Text = rdr["STUD_FIRSTNAME"].ToString();
-                                TxtMname.Text = rdr["STUD_MIDDLENAME"].ToString();
-                                string gender = rdr["STUD_GENDER"].ToString();
-                                if (gender == "Male")
-                                {
-                                    radlGender.SelectedIndex = 0;
+                                if (present) { }
+
+                                else {
+
+                                    TxtLname.Text = rdr["STUD_LASTNAME"].ToString();
+                                    TxtFname.Text = rdr["STUD_FIRSTNAME"].ToString();
+                                    TxtMname.Text = rdr["STUD_MIDDLENAME"].ToString();
+                                    string gender = rdr["STUD_GENDER"].ToString();
+                                    if (gender == "Male")
+                                    {
+                                        radlGender.SelectedIndex = 0;
+                                    }
+                                    else
+                                    {
+                                        radlGender.SelectedIndex = 1;
+                                    }
+                                    showCourData();
                                 }
-                                else
-                                {
-                                    radlGender.SelectedIndex = 1;
-                                }
-                                showCourData();
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert ('STUDENT NOT REGISTERED!')</script>");
                             }
 
                         }
@@ -90,61 +100,63 @@ namespace StudentEntryForm
 
         protected void selectCour_Click(object sender, EventArgs e)
         {
-            theDiv.Visible = Visible;
-            courCode = ddlCourse.SelectedValue;
 
-            try
-            {
-                using (var db = new SqlConnection(constring))
+                theDiv.Visible = Visible;
+                courCode = ddlCourse.SelectedValue;
+
+                try
                 {
-                    db.Open();
-                    using (var cmd = db.CreateCommand())
+                    using (var db = new SqlConnection(constring))
                     {
-                        cmd.CommandType = CommandType.Text;
-
-                        cmd.CommandText = "SELECT * FROM COUR_ENTRY_TABLE WHERE COUR_CODE = '" + courCode + "' ";
-                        SqlDataReader rdr = cmd.ExecuteReader();
-                        if (rdr.Read())
+                        db.Open();
+                        using (var cmd = db.CreateCommand())
                         {
+                            cmd.CommandType = CommandType.Text;
+
+                            cmd.CommandText = "SELECT * FROM COUR_ENTRY_TABLE WHERE COUR_CODE = '" + courCode + "' ";
+                            SqlDataReader rdr = cmd.ExecuteReader();
+                            if (rdr.Read())
+                            {
                                 TxtUnit.Text = rdr["COUR_UNIT"].ToString();
                                 courProg = rdr["COUR_PROG"].ToString();
                                 string strYr = rdr["COUR_YEAR"].ToString();
                                 years = Convert.ToInt32(strYr);
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-            }
+                catch (Exception ex)
+                {
+                }
 
-            if (courProg.Equals("Day"))
-            {
-                ddlCourProg.Items.Clear();
-                ddlCourProg.Items.Add(new ListItem("Day","Day"));
-            }
-            else if (courProg.Equals("Evening"))
-            {
-                ddlCourProg.Items.Clear();
-                ddlCourProg.Items.Add(new ListItem("Evening", "Evening"));
-            }
-            else
-            {
-                ddlCourProg.Items.Clear();
-                ddlCourProg.Items.Add(new ListItem("Day", "Day"));
-                ddlCourProg.Items.Add(new ListItem("Evening", "Evening"));
-            }
+                if (courProg.Equals("Day"))
+                {
+                    ddlCourProg.Items.Clear();
+                    ddlCourProg.Items.Add(new ListItem("Day", "Day"));
+                }
+                else if (courProg.Equals("Evening"))
+                {
+                    ddlCourProg.Items.Clear();
+                    ddlCourProg.Items.Add(new ListItem("Evening", "Evening"));
+                }
+                else
+                {
+                    ddlCourProg.Items.Clear();
+                    ddlCourProg.Items.Add(new ListItem("Day", "Day"));
+                    ddlCourProg.Items.Add(new ListItem("Evening", "Evening"));
+                }
 
-            ddlCourYrLvl.Items.Clear();
-            for (int x= 0; x <years; x++)
-            {
-                ddlCourYrLvl.Items.Insert(x, new ListItem(""+(x+1)));
-            }
+                ddlCourYrLvl.Items.Clear();
+                for (int x = 0; x < years; x++)
+                {
+                    ddlCourYrLvl.Items.Insert(x, new ListItem("" + (x + 1)));
+                }
 
-            ddlCourSem.Items.Clear();
-            ddlCourSem.Items.Add(new ListItem("First Semester", "1"));
-            ddlCourSem.Items.Add(new ListItem("Second Semester", "2"));
-            showInstructors();
+                ddlCourSem.Items.Clear();
+                ddlCourSem.Items.Add(new ListItem("First Semester", "1"));
+                ddlCourSem.Items.Add(new ListItem("Second Semester", "2"));
+                showInstructors();
+            
         }
 
         protected void srchInsttuc_Click(object sender, EventArgs e)
@@ -170,6 +182,43 @@ namespace StudentEntryForm
             //assigning datasource to the dropdownlist  
             ddlInstruc.DataBind();  //binding dropdownlist  
 
+        }
+        public void status()
+        {
+            string idnum = searchId.Text;
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                try
+                {
+                    using (var db = new SqlConnection(constring))
+                    {
+                        db.Open();
+                        using (var cmd = db.CreateCommand())
+                        {
+                            cmd.CommandType = CommandType.Text;
+
+                            cmd.CommandText = "SELECT * FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = '" + idnum + "' ";
+                            SqlDataReader rdr = cmd.ExecuteReader();
+                            if (rdr.Read())
+                            {
+
+                                present = true;
+
+                            }
+                            else
+                            {
+                                present = false;
+                            }
+
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
         }
     }
 }
