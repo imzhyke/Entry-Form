@@ -40,6 +40,7 @@ namespace StudentEntryForm
             {
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO STUD_ENTRY_TABLE(STUD_LASTNAME, STUD_FIRSTNAME, STUD_MIDDLENAME, STUD_EMAIL, STUD_GENDER, STUD_CURADD, STUD_PERADD, STUD_ELEM, STUD_JUNHIGH, STUD_SENHIGH) VALUES (@last, @first, @middle, @email, @gender, @current ,@permanent, @elem, @junior, @senior)", con))
                 {
+                    
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@last", Lname);
                     cmd.Parameters.AddWithValue("@first", Fname);

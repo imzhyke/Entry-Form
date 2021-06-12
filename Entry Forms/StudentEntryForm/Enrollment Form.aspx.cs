@@ -206,72 +206,57 @@ namespace StudentEntryForm
 
         protected void EnrollStud_Click(object sender, EventArgs e)
         {
+            studID = searchId.Text;
+            courCode = ddlCourse.SelectedValue;
             instID = ddlInstruc.SelectedValue;
             courSched = ddlCourProg.SelectedValue;
             yrlvl = ddlCourYrLvl.SelectedValue;
             sem = ddlCourSem.SelectedValue;
             status = "Enrolled";
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(ENRL_STUD_IDNUM, ENRL_COUR_CODE, ENRL_SCHED, ENRL_YRLVL, ENRL_SEM, ENRL_INST_IDNUM, ENRL_STUD_STATUS) " +
-                    "VALUES (@studId, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@studId", studID);
-                    cmd.Parameters.AddWithValue("@courCode", courCode);
-                    cmd.Parameters.AddWithValue("@sched", courSched);
-                    cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
-                    cmd.Parameters.AddWithValue("@sem", sem);
-                    cmd.Parameters.AddWithValue("@instId", instID);
-                    cmd.Parameters.AddWithValue("@status", status);
-                    con.Open();
+            Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
+                "Course Code: "+courCode+"\\n" +
+                "Sched: "+courSched+"\\n" +
+                "Sem: "+sem+"\\n" +
+                "Status: "+status+"\\n" +
+                "Instructor: "+instID+"')</script>");
+            //using (SqlConnection con = new SqlConnection(constring))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
+            //        "ENRL_STUD_IDNUM, " +
+            //        "ENRL_COUR_CODE, " +
+            //        "ENRL_SCHED, " +
+            //        "ENRL_YRLVL, " +
+            //        "ENRL_SEM, " +
+            //        "ENRL_INST_IDNUM, " +
+            //        "ENRL_STUD_STATUS) " +
+            //        "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
+            //    {
+            //        cmd.CommandType = CommandType.Text;
+            //        cmd.Parameters.AddWithValue("@studNum", studID);
+            //        cmd.Parameters.AddWithValue("@courCode", courCode);
+            //        cmd.Parameters.AddWithValue("@sched", courSched);
+            //        cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
+            //        cmd.Parameters.AddWithValue("@sem", sem);
+            //        cmd.Parameters.AddWithValue("@instId", instID);
+            //        cmd.Parameters.AddWithValue("@status", status);
+            //        con.Open();
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
+            //        int rowsThatAffected = cmd.ExecuteNonQuery();
 
-                    if (rowsAffected >= 1)
-                    {
-                        Response.Write("<script>alert ('Unable to add contact')</script>");
-                    }
+            //        if (rowsThatAffected >= 1)
+            //        {
+            //            Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN ENROLLED!')</script>");
+            //        }
 
-                    con.Close();
-                }
+            //        con.Close();
+            //    }
 
-                try
-                {
-                    using (var db = new SqlConnection(constring))
-                    {
-                        db.Open();
-                        using (var cmd = db.CreateCommand())
-                        {
-                            cmd.CommandType = CommandType.Text;
-
-                            cmd.CommandText = "SELECT * FROM STUD_ENTRY_TABLE WHERE STUD_LASTNAME = '" + Lname + "' AND  STUD_FIRSTNAME   = '" + Fname + "' ";
-                            SqlDataReader rdr = cmd.ExecuteReader();
-                            if (rdr.Read())
-                            {
-                                idNum = rdr["STUD_IDNUM"].ToString();
-                                if (rowsAffected >= 1)
-                                {
-                                    Response.Write("<script>alert ('NEW STUDENT HAS BEEN ADDED!\\n" +
-                                        "\\nIdentification Number: " + idNum + "" +
-                                        "\\nName: " + Lname + ", " + Fname + " " + Mname.Substring(0, 1) + "." +
-                                        "\\nEmail Address: " + email + "')</script>");
-                                }
-
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-            ClearContent();
-            txtHeight(30);
+            //}
 
         }
+        
 
-    }
+    
 
         public void statusCheck()
         {
