@@ -26,7 +26,7 @@ namespace StudentEntryForm
 
         int years;
 
-        bool present = false, ShowForm;
+        bool present = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -106,11 +106,11 @@ namespace StudentEntryForm
                                                     enrInstID = rdrS["ENRL_INST_IDNUM"].ToString();
                                                     enrStatus = rdrS["ENRL_STUD_IDNUM"].ToString();
 
-                                                    ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue("PassedValue"));
-                                                    TxtUnit.Text = rdrS["COUR_UNIT"].ToString();
-                                                    courProg = rdrS["COUR_PROG"].ToString();
-                                                    string strYr = rdrS["COUR_YEAR"].ToString();
-                                                    years = Convert.ToInt32(strYr);
+                                                    ddlCourse.SelectedIndex = ddlCourse.Items.IndexOf(ddlCourse.Items.FindByValue(enrCourCode));
+                                                    ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue(enrCourCode));
+                                                    ddlCourYrLvl.SelectedIndex = ddlCourYrLvl.Items.IndexOf(ddlCourYrLvl.Items.FindByValue(enrYrLvl));
+                                                    ddlCourSem.SelectedIndex = ddlCourSem.Items.IndexOf(ddlCourSem.Items.FindByValue(enrCourCode));
+
                                                 }
                                             }
                                         }
