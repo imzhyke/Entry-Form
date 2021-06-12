@@ -179,13 +179,10 @@ namespace StudentEntryForm
             ddlCourSem.Items.Clear();
             ddlCourSem.Items.Add(new ListItem("First Semester", "1"));
             ddlCourSem.Items.Add(new ListItem("Second Semester", "2"));
+
             showInstructors();
         }
 
-        protected void srchInsttuc_Click(object sender, EventArgs e)
-        {
-            theDiv.Visible = Visible;
-        }
 
         public void showInstructors()
         {
@@ -206,6 +203,16 @@ namespace StudentEntryForm
             ddlInstruc.DataBind();  //binding dropdownlist  
 
         }
+
+        protected void EnrollStud_Click(object sender, EventArgs e)
+        {
+            instID = ddlInstruc.SelectedValue;
+            courSched = ddlCourProg.SelectedValue;
+            yrlvl = ddlCourYrLvl.SelectedValue;
+            sem = ddlCourSem.SelectedValue;
+            
+        }
+
         public void statusCheck()
         {
             using (SqlConnection con = new SqlConnection(constring))

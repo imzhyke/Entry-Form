@@ -299,7 +299,7 @@
 
 
          <div runat="server" id="enrolDiv" class="btnSubmit">
-         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White"   />
+         <asp:Button CssClass="btnSbmt" ID="EnrollStud" runat="server" Text="Enroll Student" Font-Bold="True" ForeColor="White" OnClick="EnrollStud_Click"   />
          </div>
 
          <div runat="server" id="withDiv" class="updatDiv btnSubmit">
