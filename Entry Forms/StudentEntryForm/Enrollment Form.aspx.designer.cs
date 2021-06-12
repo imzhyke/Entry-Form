@@ -49,6 +49,24 @@ namespace StudentEntryForm {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl theDiv;
         
         /// <summary>
+        /// statusDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl statusDiv;
+        
+        /// <summary>
+        /// ddlStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        
+        /// <summary>
         /// TxtLname control.
         /// </summary>
         /// <remarks>

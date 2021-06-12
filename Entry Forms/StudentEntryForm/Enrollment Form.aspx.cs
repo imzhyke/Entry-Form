@@ -40,12 +40,13 @@ namespace StudentEntryForm
             {
                 withDiv.Visible = true;
                 enrolDiv.Visible = false;
-
+                statusDiv.Visible = true;
             }
             else
             {
                 withDiv.Visible = false;
                 enrolDiv.Visible = true;
+                statusDiv.Visible = false;
             }
         }
 
@@ -97,7 +98,7 @@ namespace StudentEntryForm
 
                                     
                                     
-                                    String enrCourCode, enrSched, enrSem, enrYrLvl, enrInstID, enrStatus;
+                                    string enrCourCode, enrSched, enrSem, enrYrLvl, enrInstID, enrStatus;
 
                                     try
                                     {
@@ -120,13 +121,16 @@ namespace StudentEntryForm
                                                     enrYrLvl = rdrS["ENRL_YRLVL"].ToString();
                                                     enrSem = rdrS["ENRL_SEM"].ToString();
                                                     enrInstID = rdrS["ENRL_INST_IDNUM"].ToString();
+                                                   
                                                     enrStatus = rdrS["ENRL_STUD_IDNUM"].ToString();
+                                                    status = enrStatus;
 
                                                     showCourData();
                                                     showSchedSemYrLvl(enrCourCode);
                                                     showInstructors();
 
 
+                                                    ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByValue(enrStatus));
                                                     ddlCourse.SelectedIndex = ddlCourse.Items.IndexOf(ddlCourse.Items.FindByValue(enrCourCode));
                                                     ddlCourProg.SelectedIndex = ddlCourProg.Items.IndexOf(ddlCourProg.Items.FindByValue(enrSched));
                                                     ddlCourYrLvl.SelectedIndex = ddlCourYrLvl.Items.IndexOf(ddlCourYrLvl.Items.FindByValue(enrYrLvl));
@@ -184,7 +188,8 @@ namespace StudentEntryForm
         protected void selectCour_Click(object sender, EventArgs e)
         {
             theDiv.Visible = Visible;
-            showSchedSemYrLvl(ddlCourse.SelectedValue);
+            courCode = ddlCourse.SelectedValue;
+            showSchedSemYrLvl(courCode);
             showInstructors();
         }
 
@@ -355,6 +360,79 @@ namespace StudentEntryForm
                 }
             }
             return present;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            studID = searchId.Text;
+            string ScourCode = ddlCourse.SelectedValue+" ";
+            instID = ddlInstruc.SelectedValue;
+            string ScourSched = ddlCourProg.SelectedValue + " ";
+            yrlvl = ddlCourYrLvl.SelectedValue;
+            sem = ddlCourSem.SelectedValue;
+            status = "Enrolled";
+
+
+
+            //Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
+            //    "Course Code: " + ScourCode + "\\n" +
+            //    "Sched: " + ScourSched + "\\n" +
+            //    "Sem: " + sem + "\\n" +
+            //    "Year Level: " + yrlvl + "\\n" +
+            //    "Instructor: " + instID + "')</script>");
+
+
+            using (SqlConnection conz = new SqlConnection(constring))
+            {
+                string query = "DELETE FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = " + studID + "";
+               // string query = "DELETE FROM ENRL_ENTRY_TABLE SET ENRL_COUR_CODE = " + ScourCode + ",ENRL_SCHED = " + ScourSched + ",ENRL_YRLVL = " + yrlvl + ", ENRL_SEM = " + sem + ", ENRL_INST_IDNUM = " + instID + " WHERE ENRL_STUD_IDNUM = " + studID + "";
+                //string str = "UPDATE ENRL_ENTRY_TABLE SET " +
+                //    "ENRL_COUR_CODE = " + ddlCourse.SelectedValue + "," +
+                //    "ENRL_SCHED = " + ddlCourProg.SelectedValue + "," +
+                //    "ENRL_YRLVL = " + ddlCourYrLvl.SelectedValue + "," +
+                //    "ENRL_SEM = " + ddlCourSem.SelectedValue + "," +
+                //    "ENRL_INST_IDNUM = " + ddlInstruc.SelectedValue + " WHERE ENRL_STUD_IDNUM = " + searchId.Text + "";
+                conz.Open();
+                SqlCommand cmd = new SqlCommand(query, conz);
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                conz.Close();
+
+            }
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
+                    "ENRL_STUD_IDNUM, " +
+                    "ENRL_COUR_CODE, " +
+                    "ENRL_SCHED, " +
+                    "ENRL_YRLVL, " +
+                    "ENRL_SEM, " +
+                    "ENRL_INST_IDNUM, " +
+                    "ENRL_STUD_STATUS) " +
+                    "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@studNum", studID);
+                    cmd.Parameters.AddWithValue("@courCode", ScourCode);
+                    cmd.Parameters.AddWithValue("@sched", ScourSched);
+                    cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
+                    cmd.Parameters.AddWithValue("@sem", sem);
+                    cmd.Parameters.AddWithValue("@instId", instID);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    con.Open();
+
+                    int rowsThatAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsThatAffected >= 1)
+                    {
+                        Response.Write("<script>alert ('DETAILS OF STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN UPDATED!')</script>");
+                    }
+
+                    con.Close();
+                }
+
+            }
+            theDiv.Visible = true;
         }
     }
 }

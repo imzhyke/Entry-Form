@@ -15,11 +15,9 @@
               height: 100vh;
               width:auto;
               font-family:Verdana;
-              
 
           }
           .entryForm{
-                
               position:absolute;
               top:50%;
               left:50%;
@@ -65,8 +63,6 @@
           .lableProg, .lableSem{
               margin-left:28px;
           }
-          
-
           .content{
               padding: 0 60px;
           }
@@ -83,11 +79,14 @@
               width:20%;
           }
           .DDL{
-
               height:27px;
               width:65%;
               border-radius: 5px;
               font-family:Verdana;
+          }
+          .DDLStatus{
+              width:60%;
+              float:right;
           }
           .DLLINST{
               width:76%;
@@ -102,11 +101,9 @@
           .DLLSem{
               width:39%;
           }
-
           .btnSubmit{
               text-align: center;
               padding: 15px 20px ;
-
           }
           .btnSbmt{
               width:100%;
@@ -117,7 +114,6 @@
               background-image:linear-gradient(to right, #99ADE7,#88EDD5);
               font-size: medium;
               color:snow;
-     
           }
           .btnUpdate{
               width:45%;
@@ -241,6 +237,16 @@
 
         <div runat="server" id="theDiv" class="content">
 
+          <div runat="server" id="statusDiv">
+             <h3>Status</h3>
+             <div class="items">
+            <asp:Label Text="Enrollment Status" CssClass="lables" runat="server" ></asp:Label>
+            <asp:DropDownList CssClass="DDL DDLStatus" ID="ddlStatus" runat="server" ></asp:DropDownList>
+            </div>
+
+          </div>
+
+
         <h3>Student</h3>
          <div class="items">
 
@@ -296,6 +302,8 @@
         <asp:Label Text="Instrcutor" CssClass="lables" runat="server" ></asp:Label>
         <asp:DropDownList CssClass="DDL DLLINST" ID="ddlInstruc" runat="server" ></asp:DropDownList>
         </div>
+        
+
 
 
          <div runat="server" id="enrolDiv" class="btnSubmit">
@@ -304,7 +312,7 @@
 
          <div runat="server" id="withDiv" class="updatDiv btnSubmit">
 
-         <asp:Button CssClass="btnUpdate" ID="btnUpdate" runat="server" Text="Update" Font-Bold="True" ForeColor="White" />
+         <asp:Button CssClass="btnUpdate" ID="btnUpdate" runat="server" Text="Update" Font-Bold="True" ForeColor="White" OnClick="btnUpdate_Click" />
          <asp:Button CssClass="btnWdrw" ID="btnWidraw" runat="server" Text="Withdraw" Font-Bold="True" ForeColor="White"  />
          <asp:Button CssClass="btnDel" ID="btnDel" runat="server" Text="Delete" Font-Bold="True" ForeColor="White" />
          </div>
