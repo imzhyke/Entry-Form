@@ -1,34 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CourseEntryForm.aspx.cs" Inherits="StudentEntryForm.CourseEntryForm" %>
-<!--
-Title: Course Entry Program
-Created By: Ezekiel P. Villadolid
-Date: 3/30/2021
--->
-<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/EntryFormMasterPage.Master" CodeBehind="CourseEntryForm.aspx.cs" Inherits="StudentEntryForm.CourseEntryForm" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<title>Course Entry Form</title>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">Course Entry Form
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+
       <style>
-          body{
-     
-              margin:0;
-              padding:0;
-              background-image:url('https://i.pinimg.com/originals/98/61/c6/9861c6602fdbd823b392aeda2425823e.jpg');
-              background-size: cover;
-              height: 100vh;
-              width:auto;
-              font-family:Verdana;
-              
 
-          }
           .entryForm{
                 
               position:absolute;
               top:50%;
               left:50%;
-              transform: translate(-50%,-50%);
-              width:540px;
+              transform: translate(-50%,-47%);
+              width:500px;
               padding:40px;
               border-radius: 10px;
               background:rgb(255, 255, 255);
@@ -127,17 +112,16 @@ Date: 3/30/2021
               margin-left: 25px;
           }
           .ddlProg{
-              width:38%;
+              width:35%;
+              float:right;
           }
 
 
 
-
-
       </style>
-</head>
-<body>
-<form  runat="server">
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server"> 
 
     <div class="entryForm">
          <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
@@ -190,6 +174,4 @@ Date: 3/30/2021
          </div>
          </div>
     </div>
- </form>
-</body>
-</html>
+</asp:Content>

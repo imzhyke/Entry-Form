@@ -13,6 +13,7 @@
     <style>
         a {
             text-decoration: none;
+            font-size:15.5px;
         }
 
         body {
@@ -49,6 +50,8 @@
             position: relative;
             text-decoration: none;
             transition-duration: 0.5s;
+            width:60px;
+            text-align:center;
         }
         li a {
             color: #fff;
@@ -67,7 +70,7 @@
             background: orange;
             visibility: hidden;
             opacity: 0;
-            min-width: 5rem;
+            min-width: 10rem;
             position: absolute;
             transition: all 0.5s ease;
             margin-top: 1rem;
@@ -100,8 +103,13 @@
                         <ul>
                             <li><a href="StudentEntryForm.aspx">Students Entry</a> </li>
                             <li><a href="Instructor Entry Form.aspx">Instructors Entry</a> </li>
-                            <li><a href="#">Course Entry</a> </li>
+                            <li><a href="CourseEntryForm.aspx">Course Entry</a> </li>
                             <li><a href="#">Enrollment</a>  </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Modify</a> 
+                        <ul>
+                             <li><a href="Search Student.aspx">Students Info</a> </li>
                         </ul>
                     </li>
 

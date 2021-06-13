@@ -11,17 +11,17 @@
               position:absolute;
               top:50%;
               left:50%;
-              transform: translate(-50%,-45%);
+              transform: translate(-50%,-46%);
               width:500px;
-              padding:30px;
+              padding:40px;
               border-radius: 10px;
               background:rgb(255, 255, 255);
               margin: 20px 10px;
               box-shadow: 0 0 30px #0e3134;
           }
           .logo{
-              width:86px;
-              height: 86px;
+              width:100px;
+              height: 100px;
               overflow: hidden;
               top: calc(-100px/2);
               left: calc(50% - 50px);

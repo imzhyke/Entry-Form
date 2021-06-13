@@ -1,27 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Enrollment Form.aspx.cs" Inherits="StudentEntryForm.Enrollment_Form" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/EntryFormMasterPage.Master" AutoEventWireup="true" CodeBehind="Enrollment Form.aspx.cs" Inherits="StudentEntryForm.Enrollment_Form" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server"> Enrollment Entry Form
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<title>Entry Entry Form</title>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
        <style>
-          body{
-     
-              margin:0;
-              padding:0;
-              background-image:url('https://i.pinimg.com/originals/98/61/c6/9861c6602fdbd823b392aeda2425823e.jpg');
-              background-size: cover;
-              height: 100vh;
-              width:auto;
-              font-family:Verdana;
-
-          }
           .entryForm{
               position:absolute;
               top:50%;
               left:50%;
-              transform: translate(-50%,-50%);
+              transform: translate(-50%,-47%);
               width:540px;
               padding:40px;
               border-radius: 10px;
@@ -41,9 +30,10 @@
            h2{
               color:#424642;
               display:block;
-
+              font-size: 18px;
           }
           h2::after{
+            margin-top:5px;
             display:inline-block;
             content:'';
             height:5px;
@@ -178,9 +168,9 @@
              font-size:small;
          }
           h3{
-            font-size:large;
+            font-size:16px;
             color:#424642;
-            margin-bottom : 10px;
+            margin-bottom : 0;
             margin-left:-10px;
           }
           .TxtFieldSearch{
@@ -213,10 +203,9 @@
           }
 
       </style>
-</head>
+</asp:Content>
 
-<body>
-<form  runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server"> 
 
     <div class="entryForm">
          <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
@@ -322,6 +311,4 @@
 
          </div>
     </div>
- </form>
-</body>
-</html>
+</asp:Content>
