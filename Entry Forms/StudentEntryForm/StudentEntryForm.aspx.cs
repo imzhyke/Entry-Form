@@ -17,7 +17,7 @@ namespace StudentEntryForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtHeight(26);
+            txtHeight(20);
 
 
         }
@@ -95,7 +95,7 @@ namespace StudentEntryForm
                 }
             }
             ClearContent();
-            txtHeight(30);
+            txtHeight(27);
 
         }
 

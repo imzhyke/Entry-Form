@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="EntryFormMasterPage.master.cs" Inherits="StudentEntryForm.EntryFormMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/originals/98/61/c6/9861c6602fdbd823b392aeda2425823e.jpg');
+            background-size: cover;
+            height: 100vh;
+            width: auto;
+            font-family: Verdana;
+        }
+
+        nav {
+            font-family: monospace;
+            margin: 0;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(14, 14, 14, 0.93);
+        }
+
+        ul {
+            background: darkorange;
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+        }
+
+        li {
+            color: #fff;
+            background: darkorange;
+            display: block;
+            float: left;
+            padding: 1rem;
+            position: relative;
+            text-decoration: none;
+            transition-duration: 0.5s;
+        }
+        li a {
+            color: #fff;
+        }
+
+        li:hover {
+             background: red;
+             cursor: pointer;
+        }
+
+         li:hover a {
+            outline: none;
+            }
+
+        ul li ul {
+            background: orange;
+            visibility: hidden;
+            opacity: 0;
+            min-width: 5rem;
+            position: absolute;
+            transition: all 0.5s ease;
+            margin-top: 1rem;
+            left: 0;
+            display: none;
+        }
+
+            ul li:hover > ul,
+            ul li ul:hover,
+            ul li ul:focus {
+                visibility: visible;
+                opacity: 1;
+                display: block
+            }
+
+            ul li ul li {
+                clear: both;
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <nav class="topNav">
+                <ul>
+                    <li><a href="#">Home</a> </li>
+                    <li><a href="#">Forms</a>
+                        <ul>
+                            <li><a href="StudentEntryForm.aspx">Students Entry</a> </li>
+                            <li><a href="Instructor Entry Form.aspx">Instructors Entry</a> </li>
+                            <li><a href="#">Course Entry</a> </li>
+                            <li><a href="#">Enrollment</a>  </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

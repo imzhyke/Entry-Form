@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,6 +74,8 @@
     <Content Include="Enrollment Form.aspx" />
     <Content Include="Instructor Entry Form.aspx" />
     <Content Include="packages.config" />
+    <Content Include="EntryFormMasterPage.Master" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -99,6 +102,13 @@
     <Compile Include="Enrollment Form.aspx.designer.cs">
       <DependentUpon>Enrollment Form.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntryFormMasterPage.Master.cs">
+      <DependentUpon>EntryFormMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntryFormMasterPage.Master.designer.cs">
+      <DependentUpon>EntryFormMasterPage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Instructor Entry Form.aspx.cs">
       <DependentUpon>Instructor Entry Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -113,6 +123,13 @@
     </Compile>
     <Compile Include="StudentEntryForm.aspx.designer.cs">
       <DependentUpon>StudentEntryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

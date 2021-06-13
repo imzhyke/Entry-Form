@@ -1,40 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentEntryForm.aspx.cs" Inherits="StudentEntryForm.StudentForm" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/EntryFormMasterPage.Master" AutoEventWireup="true" CodeBehind="StudentEntryForm.aspx.cs" Inherits="StudentEntryForm.StudentForm" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server"> Student Entry Form
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Student Entry Form</title>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+
       <style>
-          body{
-     
-              margin:0;
-              padding:0;
-              background-image:url('https://i.pinimg.com/originals/98/61/c6/9861c6602fdbd823b392aeda2425823e.jpg');
-              background-size: cover;
-              height: 100vh;
-              width:auto;
-              font-family:Verdana;
-              
-
-          }
           .entryForm{
-                
               position:absolute;
               top:50%;
               left:50%;
-              transform: translate(-50%,-50%);
-              width:600px;
-              height:800px;
-              padding:40px;
+              transform: translate(-50%,-45%);
+              width:500px;
+              padding:30px;
               border-radius: 10px;
               background:rgb(255, 255, 255);
               margin: 20px 10px;
               box-shadow: 0 0 30px #0e3134;
           }
           .logo{
-              width:100px;
-              height: 100px;
+              width:86px;
+              height: 86px;
               overflow: hidden;
               top: calc(-100px/2);
               left: calc(50% - 50px);
@@ -44,9 +31,12 @@
            h2{
               color:#424642;
               display:block;
+              font-size: 18px;
+              
 
           }
           h2::after{
+            margin-top:5px;
             display:inline-block;
             content:'';
             height:5px;
@@ -61,16 +51,17 @@
           .lblFName,.lblLName,.lblGender,.lblMName,.lblCurAdd,.lblPerAdd,.lblSchool{
               font-weight:bold;
               color: #424642;
+              font-size:12px;
           }
 
           .content{
-              padding: 0 60px;
+              padding: 0 40px;
           }
          .items{
-             margin:10px 15px;
+             margin:5px 8px;
          }
           .TxtField{
-              height:29px;
+              height:23px;
               width:100%;
               border-radius: 5px;
               font-family:Verdana;
@@ -78,14 +69,13 @@
 
           .btnSubmit{
               text-align: center;
-              padding: 15px 20px ;
+              padding: 10px 0px;
               margin-left: 10px;
-          
-               
+ 
           }
           .btnSbmt{
               width:100%;
-              height: 50px;
+              height: 40px;
               border:none;
               outline: none;
               border-radius: 5px;
@@ -108,6 +98,11 @@
             color:#424642;
             margin-bottom : 10px;
             margin-left:-10px;
+            font-size:15px;
+          }
+          .radBtnGender{
+              font-size:small;
+              font-family:Verdana;
           }
 
 
@@ -116,9 +111,11 @@
 
 
       </style>
-</head>
-<body>
-<form  runat="server">
+</asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server"> 
+
 
     <div class="entryForm">
          <img src="https://4.bp.blogspot.com/_ELQIMjUsd1Y/TI2Z14FJm_I/AAAAAAAAABY/-jzZbgI-o9k/s1600/official+ctu+logov2.png" alt="CTU LOGO"  id="ctuLogo" class="logo" />
@@ -195,6 +192,4 @@
             </div>
          </div>
     </div>
- </form>
-</body>
-</html>
+</asp:Content>
