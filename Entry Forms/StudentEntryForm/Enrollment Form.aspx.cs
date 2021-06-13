@@ -365,73 +365,97 @@ namespace StudentEntryForm
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             studID = searchId.Text;
-            string ScourCode = ddlCourse.SelectedValue+" ";
+            string ScourCode = ddlCourse.SelectedValue;
             instID = ddlInstruc.SelectedValue;
-            string ScourSched = ddlCourProg.SelectedValue + " ";
+            string ScourSched = ddlCourProg.SelectedValue;
             yrlvl = ddlCourYrLvl.SelectedValue;
             sem = ddlCourSem.SelectedValue;
             status = ddlStatus.SelectedValue;
 
 
 
-            //Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
-            //    "Course Code: " + ScourCode + "\\n" +
-            //    "Sched: " + ScourSched + "\\n" +
-            //    "Sem: " + sem + "\\n" +
-            //    "Year Level: " + yrlvl + "\\n" +
-            //    "Instructor: " + instID + "')</script>");
 
-
-            using (SqlConnection conz = new SqlConnection(constring))
+            using (var db = new SqlConnection(constring))
             {
-                string query = "DELETE FROM ENRL_ENTRY_TABLE WHERE ENRL_STUD_IDNUM = " + studID + "";
-               // string query = "DELETE FROM ENRL_ENTRY_TABLE SET ENRL_COUR_CODE = " + ScourCode + ",ENRL_SCHED = " + ScourSched + ",ENRL_YRLVL = " + yrlvl + ", ENRL_SEM = " + sem + ", ENRL_INST_IDNUM = " + instID + " WHERE ENRL_STUD_IDNUM = " + studID + "";
-                //string str = "UPDATE ENRL_ENTRY_TABLE SET " +
-                //    "ENRL_COUR_CODE = " + ddlCourse.SelectedValue + "," +
-                //    "ENRL_SCHED = " + ddlCourProg.SelectedValue + "," +
-                //    "ENRL_YRLVL = " + ddlCourYrLvl.SelectedValue + "," +
-                //    "ENRL_SEM = " + ddlCourSem.SelectedValue + "," +
-                //    "ENRL_INST_IDNUM = " + ddlInstruc.SelectedValue + " WHERE ENRL_STUD_IDNUM = " + searchId.Text + "";
-                conz.Open();
-                SqlCommand cmd = new SqlCommand(query, conz);
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                conz.Close();
-
-            }
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
-                    "ENRL_STUD_IDNUM, " +
-                    "ENRL_COUR_CODE, " +
-                    "ENRL_SCHED, " +
-                    "ENRL_YRLVL, " +
-                    "ENRL_SEM, " +
-                    "ENRL_INST_IDNUM, " +
-                    "ENRL_STUD_STATUS) " +
-                    "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
+                db.Open();
+                using (var cmd = db.CreateCommand())
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@studNum", studID);
-                    cmd.Parameters.AddWithValue("@courCode", ScourCode);
-                    cmd.Parameters.AddWithValue("@sched", ScourSched);
-                    cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
-                    cmd.Parameters.AddWithValue("@sem", sem);
-                    cmd.Parameters.AddWithValue("@instId", instID);
-                    cmd.Parameters.AddWithValue("@status", status);
-                    con.Open();
+                    cmd.CommandText = "UPDATE ENRL_ENTRY_TABLE SET ENRL_COUR_CODE = @CCODE, ENRL_SCHED = @SCHED, ENRL_YRLVL = @YRLVL, ENRL_SEM = @SEM, ENRL_INST_IDNUM = @INSTID WHERE ENRL_STUD_IDNUM = @STUDID";
 
-                    int rowsThatAffected = cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@CCODE", ScourCode);
+                    cmd.Parameters.AddWithValue("@SCHED", ScourSched);
+                    cmd.Parameters.AddWithValue("@YRLVL", yrlvl);
+                    cmd.Parameters.AddWithValue("@SEM", sem);
+                    cmd.Parameters.AddWithValue("@INSTID", instID);
+                    cmd.Parameters.AddWithValue("@STUDID", studID);
+                    var ctr = cmd.ExecuteNonQuery();
 
-                    if (rowsThatAffected >= 1)
+                    if (ctr >= 1)
                     {
-                        Response.Write("<script>alert ('DETAILS OF STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN UPDATED!')</script>");
+                        Response.Write("<script>alert ('STUDENT ID NUMBER (" + studID + ")\\n" +
+                            "Course Code: " + ScourCode + "\\n" +
+                            "Sched: " + ScourSched + "\\n" +
+                            "Sem: " + sem + "\\n" +
+                            "Year Level: " + yrlvl + "\\n" +
+                            "Instructor: " + instID + "')</script>");
                     }
-
-                    con.Close();
                 }
-
+                db.Close();
             }
+
+            //using (SqlConnection conz = new SqlConnection(constring))
+            //{
+            //    string query = "";
+            //    // string query = "DELETE FROM ENRL_ENTRY_TABLE SET ENRL_COUR_CODE = " + ScourCode + ",ENRL_SCHED = " + ScourSched + ",ENRL_YRLVL = " + yrlvl + ", ENRL_SEM = " + sem + ", ENRL_INST_IDNUM = " + instID + " WHERE ENRL_STUD_IDNUM = " + studID + "";
+            //    //string str = "UPDATE ENRL_ENTRY_TABLE SET " +
+            //    //    "ENRL_COUR_CODE = " + ddlCourse.SelectedValue + "," +
+            //    //    "ENRL_SCHED = " + ddlCourProg.SelectedValue + "," +
+            //    //    "ENRL_YRLVL = " + ddlCourYrLvl.SelectedValue + "," +
+            //    //    "ENRL_SEM = " + ddlCourSem.SelectedValue + "," +
+            //    //    "ENRL_INST_IDNUM = " + ddlInstruc.SelectedValue + 
+            //    //" WHERE ENRL_STUD_IDNUM = " + searchId.Text + "";
+            //    conz.Open();
+            //    SqlCommand cmd = new SqlCommand(query, conz);
+            //    int rowsAffected = cmd.ExecuteNonQuery();
+
+            //    conz.Close();
+
+            //}
+            //using (SqlConnection con = new SqlConnection(constring))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("INSERT INTO ENRL_ENTRY_TABLE(" +
+            //        "ENRL_STUD_IDNUM, " +
+            //        "ENRL_COUR_CODE, " +
+            //        "ENRL_SCHED, " +
+            //        "ENRL_YRLVL, " +
+            //        "ENRL_SEM, " +
+            //        "ENRL_INST_IDNUM, " +
+            //        "ENRL_STUD_STATUS) " +
+            //        "VALUES (@studNum, @courCode, @sched, @yearlvl, @sem, @instId, @status)", con))
+            //    {
+            //        cmd.CommandType = CommandType.Text;
+            //        cmd.Parameters.AddWithValue("@studNum", studID);
+            //        cmd.Parameters.AddWithValue("@courCode", ScourCode);
+            //        cmd.Parameters.AddWithValue("@sched", ScourSched);
+            //        cmd.Parameters.AddWithValue("@yearlvl", yrlvl);
+            //        cmd.Parameters.AddWithValue("@sem", sem);
+            //        cmd.Parameters.AddWithValue("@instId", instID);
+            //        cmd.Parameters.AddWithValue("@status", status);
+            //        con.Open();
+
+            //        int rowsThatAffected = cmd.ExecuteNonQuery();
+
+            //        if (rowsThatAffected >= 1)
+            //        {
+            //            Response.Write("<script>alert ('DETAILS OF STUDENT WITH ID NUMBER (" + studID + ") HAS BEEN UPDATED!')</script>");
+            //        }
+
+            //        con.Close();
+            //    }
+
+            //}
+
             theDiv.Visible = true;
         }
 

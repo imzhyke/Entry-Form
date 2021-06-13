@@ -14,6 +14,17 @@ namespace StudentEntryForm
     public partial class Search_Student : System.Web.UI.Page
     {
         string constring = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        string lastName;
+        string firstName;
+        string midName;
+        string emailG;
+        string genderG;
+        string curAdd;
+        string perAdd;
+        string elem;
+        string junHigh;
+        string senHigh;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,17 +52,23 @@ namespace StudentEntryForm
                             {
 
                                 theDiv.Visible = true;
-                                TxtLname.Text = rdr["STUD_LASTNAME"].ToString();
-                                TxtFname.Text = rdr["STUD_FIRSTNAME"].ToString();
-                                TxtMname.Text = rdr["STUD_MIDDLENAME"].ToString();
-                                TxtCurAdd.Text = rdr["STUD_CURADD"].ToString();
-                                TxtPerAdd.Text = rdr["STUD_PERADD"].ToString();
-                                TxtElem.Text = rdr["STUD_ELEM"].ToString();
-                                TxtJunHigh.Text = rdr["STUD_JUNHIGH"].ToString();
-                                TxtSenHigh.Text = rdr["STUD_SENHIGH"].ToString();
+                                lastName = rdr["STUD_LASTNAME"].ToString(); ;
+                                firstName = rdr["STUD_FIRSTNAME"].ToString(); 
+                                midName = rdr["STUD_MIDDLENAME"].ToString(); 
+                                emailG = rdr["STUD_EMAIL"].ToString();
+                                genderG = rdr["STUD_GENDER"].ToString(); 
+                                curAdd = rdr["STUD_CURADD"].ToString(); 
+                                perAdd = rdr["STUD_PERADD"].ToString(); 
+                                elem = rdr["STUD_ELEM"].ToString(); ; 
+                                junHigh = rdr["STUD_JUNHIGH"].ToString(); 
+                                senHigh = rdr["STUD_SENHIGH"].ToString();
 
-                                string gender = rdr["STUD_GENDER"].ToString();
-                                if (gender == "Male")
+
+                                TxtLname.Text = lastName;
+                                TxtFname.Text = firstName;
+                                TxtMname.Text = midName;
+
+                                if (genderG == "Male")
                                 {
                                     radlGender.SelectedIndex = 0;
                                 }
@@ -59,7 +76,11 @@ namespace StudentEntryForm
                                 {
                                     radlGender.SelectedIndex = 1;
                                 }
-
+                                TxtCurAdd.Text = curAdd;
+                                TxtPerAdd.Text = perAdd;
+                                TxtElem.Text = elem;
+                                TxtJunHigh.Text = junHigh;
+                                TxtSenHigh.Text = senHigh;
 
                             }
                             else
@@ -109,40 +130,55 @@ namespace StudentEntryForm
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            theDiv.Visible = true;
             string Lname = TxtLname.Text;
             string Fname = TxtFname.Text;
-            string Mname = TxtMname.Text;
-            string gender = radlGender.SelectedValue;
-            string email = String.Concat(Fname.ToLower(), ".", Lname.ToLower(), "@ctu.edu.ph");
-            string currAdd = TxtCurAdd.Text;
-            string permAdd = TxtPerAdd.Text;
-            string elemSchool = TxtElem.Text;
-            string junSchool = TxtJunHigh.Text;
-            string senSchool = TxtSenHigh.Text;
+            string genderl = radlGender.SelectedValue;
+            string emaill = String.Concat(Fname.ToLower(), ".", Lname.ToLower(), "@ctu.edu.ph");
             string idNum = searchId.Text;
 
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                string query = "UPDATE STUD_ENTRY_TABLE SET STUD_LASTNAME = " + Lname + "STUD_FIRSTNAME= " + Fname + ", " +
-                    "STUD_MIDDLENAME= " + Mname + ", " +
-                    "STUD_EMAIL= " + email + ", " +
-                    "STUD_GENDER= " + gender + ", " +
-                    "STUD_CURADD= " + currAdd + ", " +
-                    "STUD_PERADD= " + permAdd + ", " +
-                    "STUD_ELEM= " + elemSchool + ", " +
-                    "STUD_JUNHIGH= " + junSchool + ", " +
-                    "STUD_SENHIGH= " + senSchool + "WEHERE STUD_IDNUM = "+idNum+"";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected >= 1)
+      
+                using (var db = new SqlConnection(constring))
                 {
-                    Response.Write("<script>alert ('DETAILS OF STUDENT WITH ID NUMBER (" + idNum + ") HAS BEEN UPDATED!')</script>");
+                    db.Open();
+                    using (var cmd = db.CreateCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "UPDATE STUD_ENTRY_TABLE SET " +
+                    "STUD_LASTNAME = @LN, " +
+                    "STUD_FIRSTNAME= @FN, " +
+                    "STUD_MIDDLENAME= @MN, " +
+                    "STUD_EMAIL = @EML, " +
+                    "STUD_GENDER = @GEN, " +
+                    "STUD_CURADD = @CUR, " +
+                    "STUD_PERADD = @PER, " +
+                    "STUD_ELEM = @ELEM, " +
+                    "STUD_JUNHIGH = @JUN, " +
+                    "STUD_SENHIGH = @SEM" +
+                    " WHERE STUD_IDNUM = @ID";
+
+                    cmd.Parameters.AddWithValue("@LN", TxtLname.Text);
+                    cmd.Parameters.AddWithValue("@FN", TxtFname.Text);
+                    cmd.Parameters.AddWithValue("@MN", TxtMname.Text);
+                    cmd.Parameters.AddWithValue("@EML", emaill);
+                    cmd.Parameters.AddWithValue("@GEN", genderl);
+                    cmd.Parameters.AddWithValue("@CUR", TxtCurAdd.Text);
+                    cmd.Parameters.AddWithValue("@PER", TxtPerAdd.Text);
+                    cmd.Parameters.AddWithValue("@ELEM", TxtElem.Text);
+                    cmd.Parameters.AddWithValue("@JUN", TxtJunHigh.Text);
+                    cmd.Parameters.AddWithValue("@SEM", TxtSenHigh.Text);
+                    cmd.Parameters.AddWithValue("@ID", idNum);
+                    var ctr = cmd.ExecuteNonQuery();
+
+                    if (ctr >= 1)
+                    {
+                        Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + idNum + ") HAS BEEN UPDATED!')</script>");
+                    }
+                    }
+                    db.Close();
                 }
 
-                con.Close();
-            }
+            txtHeight(24);
         }
     }
 }

@@ -104,7 +104,7 @@
                             <li><a href="StudentEntryForm.aspx">Students Entry</a> </li>
                             <li><a href="Instructor Entry Form.aspx">Instructors Entry</a> </li>
                             <li><a href="CourseEntryForm.aspx">Course Entry</a> </li>
-                            <li><a href="#">Enrollment</a>  </li>
+                            <li><a href="Enrollment Form.aspx">Enrollment</a>  </li>
                         </ul>
                     </li>
                     <li><a href="#">Modify</a> 
