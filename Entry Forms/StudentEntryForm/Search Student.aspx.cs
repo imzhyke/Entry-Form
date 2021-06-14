@@ -170,6 +170,7 @@ namespace StudentEntryForm
                     cmd.Parameters.AddWithValue("@ID", idNum);
                     var ctr = cmd.ExecuteNonQuery();
 
+
                     if (ctr >= 1)
                     {
                         Response.Write("<script>alert ('STUDENT WITH ID NUMBER (" + idNum + ") HAS BEEN UPDATED!')</script>");
