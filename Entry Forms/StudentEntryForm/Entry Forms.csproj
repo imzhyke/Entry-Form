@@ -72,6 +72,8 @@
     </Content>
     <Content Include="CourseEntryForm.aspx" />
     <Content Include="Enrollment Form.aspx" />
+    <Content Include="Enrollmentreport.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="Instructor Entry Form.aspx" />
     <Content Include="packages.config" />
     <Content Include="EntryFormMasterPage.Master" />
@@ -102,12 +104,26 @@
     <Compile Include="Enrollment Form.aspx.designer.cs">
       <DependentUpon>Enrollment Form.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Enrollmentreport.aspx.cs">
+      <DependentUpon>Enrollmentreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Enrollmentreport.aspx.designer.cs">
+      <DependentUpon>Enrollmentreport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EntryFormMasterPage.Master.cs">
       <DependentUpon>EntryFormMasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EntryFormMasterPage.Master.designer.cs">
       <DependentUpon>EntryFormMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Instructor Entry Form.aspx.cs">
       <DependentUpon>Instructor Entry Form.aspx</DependentUpon>

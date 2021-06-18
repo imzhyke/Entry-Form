@@ -4,6 +4,10 @@
 
 <html>
 <head runat="server">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
     <title>
         <asp:ContentPlaceHolder ID="title" runat="server">
         </asp:ContentPlaceHolder>
@@ -11,9 +15,10 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&display=swap');
         a {
             text-decoration: none;
-            font-size:15.5px;
+            font-size: 15.5px;
         }
 
         body {
@@ -31,43 +36,67 @@
             margin: 0;
             height: 50px;
             width: 100%;
-            background-color: rgba(14, 14, 14, 0.93);
+            display: flex;
+            background-color: #5d7b9d;
+            justify-content: center;
         }
 
+
         ul {
-            background: darkorange;
             list-style: none;
             margin: 0;
             padding-left: 0;
+            z-index: 10;
+        }
+
+        nav p {
+            font-family: 'Bebas Neue', cursive;
+            position: absolute;
+            left: 8%;
+            top: -25px;
+            color: #fffff3;
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 2px;
         }
 
         li {
-            color: #fff;
-            background: darkorange;
+            color: #312f55;
+            background: #5d7b9d;
             display: block;
             float: left;
             padding: 1rem;
             position: relative;
             text-decoration: none;
             transition-duration: 0.5s;
-            width:60px;
-            text-align:center;
-        }
-        li a {
-            color: #fff;
-        }
-
-        li:hover {
-             background: red;
-             cursor: pointer;
+            width: 100px;
+            text-align: center;
+            border-right: solid;
+            border-width: 1px;
+            border-color: #7b9dc4;
         }
 
-         li:hover a {
-            outline: none;
+            li:last-child {
+                border: none;
             }
 
+            li a {
+                color: #fffff3;
+                font-weight: bold;
+                letter-spacing: 2px;
+                font-size: 15px;
+            }
+
+            li:hover {
+                background: #7b9dc4;
+                cursor: pointer;
+            }
+
+                li:hover a {
+                    outline: none;
+                }
+
         ul li ul {
-            background: orange;
             visibility: hidden;
             opacity: 0;
             min-width: 10rem;
@@ -89,30 +118,37 @@
             ul li ul li {
                 clear: both;
                 width: 100%;
+                border-top: solid;
+                border-bottom: solid;
+                border-width: 1px;
+                border-color: #7b9dc4;
             }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-
             <nav class="topNav">
-                <ul>
-                    <li><a href="#">Home</a> </li>
-                    <li><a href="#">Forms</a>
-                        <ul>
-                            <li><a href="StudentEntryForm.aspx">Students Entry</a> </li>
-                            <li><a href="Instructor Entry Form.aspx">Instructors Entry</a> </li>
-                            <li><a href="CourseEntryForm.aspx">Course Entry</a> </li>
-                            <li><a href="Enrollment Form.aspx">Enrollment</a>  </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Modify</a> 
-                        <ul>
-                             <li><a href="Search Student.aspx">Students Info</a> </li>
-                        </ul>
-                    </li>
 
+                <p>STUDENTS SYSTEM</p>
+                <ul>
+                    <li><a href="index.aspx">HOME</a> </li>
+                    <li><a href="#">FORMS</a>
+                        <ul>
+                            <li><a href="StudentEntryForm.aspx">STUDENT ENTRY</a> </li>
+                            <li><a href="Instructor Entry Form.aspx">INSTRUCTOR ENTRY</a> </li>
+                            <li><a href="CourseEntryForm.aspx">COURSE ENTRY</a> </li>
+                            <li><a href="Enrollment Form.aspx">ENROLLMENT ENTRY</a>  </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">EDIT</a>
+                        <ul>
+                            <li><a href="Search Student.aspx">STUDENT DETAILS</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Enrollmentreport.aspx">REPORT</a>
+                    </li>
 
                 </ul>
 
