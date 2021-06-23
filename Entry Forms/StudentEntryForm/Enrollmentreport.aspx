@@ -106,8 +106,8 @@
             <asp:ListItem>Enrolled</asp:ListItem>  
             <asp:ListItem>Withdrawn</asp:ListItem>  
         </asp:DropDownList>
-       <%-- <asp:RequiredFieldValidator CssClass="validatorsSrch" ID="RequiredFieldValidator1" runat="server" ControlToValidate="searchId" Display="Dynamic" ErrorMessage="Required">*</asp:RequiredFieldValidator>
-       --%> <asp:Button CssClass="btnSbmt" ID="srchStudBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White" OnClick="srchStudBtn_Click"   />
+  
+           <asp:Button CssClass="btnSbmt" ID="srchStudBtn" runat="server" Text="Search" Font-Bold="True" ForeColor="White" OnClick="srchStudBtn_Click"   />
         </div>
        </div>
         </div>
