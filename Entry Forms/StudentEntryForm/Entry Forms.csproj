@@ -87,7 +87,9 @@
   <ItemGroup>
     <Content Include="Search Student.aspx" />
     <Content Include="StudentEntryForm.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseEntryForm.aspx.cs">
